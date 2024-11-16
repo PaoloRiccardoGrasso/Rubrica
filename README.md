@@ -1,5 +1,5 @@
 
-[![Java](https://img.shields.io/badge/Java-23-blue.svg?style=flat-square&logo=java)](https://www.oracle.com/java/) [![Download](https://img.shields.io/badge/Download-File-yellow.svg?style=flat-square&logo=github)](https://github.com/tuo-username/nome-repo/releases) [![Stars](https://img.shields.io/github/stars/tuo-username/nome-repo?style=flat-square&logo=github)](https://github.com/tuo-username/nome-repo/stargazers)
+[![Java](https://img.shields.io/badge/Java-23-blue.svg?style=flat-square&logo=java)](https://www.oracle.com/java/) [![Download](https://img.shields.io/badge/Download-File-yellow.svg?style=flat-square&logo=github)](https://github.com/PaoloRiccardoGrasso/Rubrica/releases) [![Stars](https://img.shields.io/github/stars/PaoloRiccardoGrasso/Rubrica?style=flat-square&logo=github)](https://github.com/tuo-username/nome-repo/stargazers)
 
 
 # Gestione Rubrica CLI in Java 📖  
