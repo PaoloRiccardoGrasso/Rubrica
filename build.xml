@@ -1,36 +1,14 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<project name="Rubrica" default="build" basedir=".">
+<project name="Rubrica" default="default" basedir=".">
+    <description>Builds, tests, and runs the project Rubrica.</description>
     
-    <!-- Definisce il classpath di compilazione -->
-    <path id="compile.classpath">
-        <fileset dir="lib">
-            <include name="**/*.jar"/>
-        </fileset>
-    </path>
+    <!-- Aggiungi qui l'importazione del file di build di NetBeans, se necessario -->
+    <import file="nbproject/build-impl.xml"/>
 
-    <!-- Target di pulizia -->
-    <target name="clean">
-        <delete dir="build"/>
+    <!-- Imposta il percorso di src correttamente -->
+    <target name="compile">
+        <mkdir dir="build"/>
+        <javac srcdir="src" destdir="build/classes"/>
     </target>
 
-    <!-- Target di compilazione -->
-    <target name="compile" depends="clean">
-        <mkdir dir="build/classes"/>
-        <javac srcdir="src" destdir="build/classes" classpathref="compile.classpath"/>
-    </target>
-
-    <!-- Target di esecuzione del programma -->
-    <target name="run" depends="compile">
-        <java classname="rubrica.Main" classpath="build/classes" fork="true"/>
-    </target>
-
-    <!-- Target di creazione del JAR -->
-    <target name="jar" depends="compile">
-        <mkdir dir="build/libs"/>
-        <jar destfile="build/libs/rubrica.jar" basedir="build/classes"/>
-    </target>
-
-    <!-- Target di build (compila e crea il JAR) -->
-    <target name="build" depends="compile, jar"/>
-
+    <!-- Aggiungi altri target, come test o jar, se necessario -->
 </project>
