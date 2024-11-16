@@ -34,7 +34,7 @@
 1. **Clona la repository**:  
    ```bash
    git clone https://github.com/PaoloRiccardoGrasso/Rubrica.git
-   cd nome-repo
+   cd rubrica
    ```
 
 2. **Compila il codice sorgente**:  
