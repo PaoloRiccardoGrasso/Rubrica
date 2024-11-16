@@ -1,2 +1,95 @@
-# Rubrica
-Questo progetto è un'applicazione a riga di comando (CLI) sviluppata in Java che consente di gestire una rubrica in modo semplice ed efficace. Offre funzionalità essenziali per visualizzare, aggiungere, modificare, rimuovere e cercare contatti.
+
+[![Java](https://img.shields.io/badge/Java-23-blue.svg?style=flat-square&logo=java)](https://www.oracle.com/java/) [![Download](https://img.shields.io/badge/Download-File-yellow.svg?style=flat-square&logo=github)](https://github.com/tuo-username/nome-repo/releases) [![Stars](https://img.shields.io/github/stars/tuo-username/nome-repo?style=flat-square&logo=github)](https://github.com/tuo-username/nome-repo/stargazers)
+
+
+# Gestione Rubrica CLI in Java 📖  
+
+
+
+
+**Gestione Rubrica CLI** è un'applicazione a riga di comando, sviluppata in **Java**, progettata per offrire una gestione semplice ed efficace dei contatti. Con un'interfaccia intuitiva, ti permette di visualizzare, aggiungere, modificare, eliminare e cercare utenti nella tua rubrica.
+
+---
+
+## ✨ **Caratteristiche principali**  
+
+- **📜 Visualizza contatti**: Mostra l'intera rubrica con un formato chiaro e organizzato.  
+- **➕ Aggiungi contatti**: Inserisci nuovi contatti fornendo dettagli come:  
+  - Nome e Cognome  
+  - Numero di Telefono  
+  - Indirizzo Email  
+- **✏️ Modifica contatti**: Aggiorna facilmente i dati di un contatto esistente.  
+- **🗑️ Rimuovi contatti**: Elimina con sicurezza un contatto dalla rubrica.  
+- **🔍 Cerca contatti**: Trova rapidamente un contatto tramite parole chiave o criteri specifici (es. nome, cognome o numero).  
+
+---
+
+## 🛠️ **Prerequisiti**
+
+- **Java 8** o versione successiva installata.  
+- Un terminale a riga di comando (ad esempio, cmd, bash, zsh).  
+
+---
+
+## 🚀 **Come iniziare**
+
+1. **Clona la repository**:  
+   ```bash
+   git clone https://github.com/tuo-username/nome-repo.git
+   cd nome-repo
+   ```
+
+2. **Compila il codice sorgente**:  
+   ```bash
+   javac Main.java
+   ```
+
+3. **Esegui l'applicazione**:  
+   ```bash
+   java Main
+   ```
+
+4. Segui le istruzioni nel terminale per gestire la tua rubrica!  
+
+---
+
+## 📂 **Struttura del progetto**
+
+```plaintext
+Rubrica/
+│
+├── Main.java       # Classe principale
+├── Contact.java    # Modello per i contatti
+├── Rubrica.java    # Logica per la gestione della rubrica
+├── Menu.java       # Interfaccia a menù per CLI
+└── README.md       # Documentazione del progetto
+```
+
+---
+
+## 🤝 **Contributi**
+
+Contributi al progetto sono i benvenuti! Puoi:  
+- Segnalare bug o problemi tramite le **Issues**.  
+- Aprire una **Pull Request** con nuove funzionalità o miglioramenti.  
+
+---
+
+## 🤝 **Collaboratori**
+
+I collaboratori del progetto! 💪  
+
+
+| Avatar | 👤 **Nome**                | 🔗 **GitHub Profile**                                      | ✨ **Ruolo**             |
+|--------|----------------------------|-----------------------------------------------------------|--------------------------|
+| <img src="https://github.com/PaoloRiccardoGrasso.png?size=80" width="80" height="80" style="border-radius: 50%;"> | **Paolo Riccardo Grasso** | [@PaoloRiccardoGrasso](https://github.com/PaoloRiccardoGrasso) | Creatore & Manutentore |
+| <img src="https://github.com/MatteoLucia.png?size=80" width="80" height="80" style="border-radius: 50%;"> | **Matteo Lucia**         | [@MatteoLucia](https://github.com/MatteoLucia)              | Creatore & Manutentore |
+| <img src="https://github.com/MarioFavoino.png?size=80" width="80" height="80" style="border-radius: 50%;"> | **Mario Favoino**        | [@MarioFavoino](https://github.com/MarioFavoino)            | Creatore & Manutentore |
+| <img src="https://github.com/AleDiNellego.png?size=80" width="80" height="80" style="border-radius: 50%;"> | **Alessandro Di Nella**  | [@AlessandroDiNella](https://github.com/AleDiNellego)       | Creatore & Manutentore |
+| <img src="https://github.com/GiuseppeSalomita.png?size=80" width="80" height="80" style="border-radius: 50%;"> | **Giuseppe Salomita**    | [@GiuseppeSalomita](https://github.com/GiuseppeSalomita)    | Creatore & Manutentore |
+
+
+### 🔗 **Link Utili**
+
+- [Documentazione Java](https://docs.oracle.com/javase/8/docs/api/)  
+  
