@@ -33,7 +33,7 @@
 
 1. **Clona la repository**:  
    ```bash
-   git clone https://github.com/tuo-username/nome-repo.git
+   git clone https://github.com/PaoloRiccardoGrasso/Rubrica.git
    cd nome-repo
    ```
 
