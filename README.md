@@ -57,7 +57,7 @@
 Rubrica/
 │
 ├── Main.java       # Classe principale
-├── Contact.java    # Modello per i contatti
+├── Contatto.java    # Modello per i contatti
 ├── Rubrica.java    # Logica per la gestione della rubrica
 ├── Menu.java       # Interfaccia a menù per CLI
 └── README.md       # Documentazione del progetto
