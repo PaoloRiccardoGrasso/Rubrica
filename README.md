@@ -86,7 +86,7 @@ I collaboratori del progetto! 💪
 | <img src="https://github.com/MatteoLucia.png?size=80" width="80" height="80" style="border-radius: 50%;"> | **Matteo Lucia**         | [@MatteoLucia](https://github.com/MatteoLucia)              | Creatore & Manutentore |
 | <img src="https://github.com/MarioFavoino.png?size=80" width="80" height="80" style="border-radius: 50%;"> | **Mario Favoino**        | [@MarioFavoino](https://github.com/MarioFavoino)            | Creatore & Manutentore |
 | <img src="https://github.com/AleDiNellego.png?size=80" width="80" height="80" style="border-radius: 50%;"> | **Alessandro Di Nella**  | [@AlessandroDiNella](https://github.com/AleDiNellego)       | Creatore & Manutentore |
-| <img src="https://github.com/GiuseppeSalomita.png?size=80" width="80" height="80" style="border-radius: 50%;"> | **Giuseppe Salomita**    | [@GiuseppeSalomita](https://github.com/GiuseppeSalomita)    | Creatore & Manutentore |
+| <img src="https://github.com/GiuseSalomita.png?size=80" width="80" height="80" style="border-radius: 50%;"> | **Giuseppe Salomita**    | [@GiuseppeSalomita](https://github.com/GiuseSalomita)    | Creatore & Manutentore |
 
 
 ### 🔗 **Link Utili**
