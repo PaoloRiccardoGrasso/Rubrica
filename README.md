@@ -1,13 +1,9 @@
-
 [![Java](https://img.shields.io/badge/Java-23-blue.svg?style=flat-square&logo=java)](https://www.oracle.com/java/) [![Download](https://img.shields.io/badge/Download-File-yellow.svg?style=flat-square&logo=github)](https://github.com/PaoloRiccardoGrasso/Rubrica/releases) [![Stars](https://img.shields.io/github/stars/PaoloRiccardoGrasso/Rubrica?style=flat-square&logo=github)](https://github.com/tuo-username/nome-repo/stargazers) [![Build Status](https://img.shields.io/github/actions/workflow/status/PaoloRiccardoGrasso/Rubrica/build.yml?branch=main&style=flat-square&logo=github)](https://github.com/PaoloRiccardoGrasso/Rubrica/actions) [![Contributors](https://img.shields.io/github/contributors/PaoloRiccardoGrasso/Rubrica?style=flat-square&logo=github)](https://github.com/PaoloRiccardoGrasso/Rubrica/graphs/contributors)
 
 
 
 
-# Gestione Rubrica CLI in Java 📖  
-
-
-
+[![Typing SVG](https://readme-typing-svg.demolab.com?font=Helvetica&duration=5500&pause=1000&color=000000&repeat=false&random=true&width=435&lines=Gestione+Rubrica+CLI+in+Java+%F0%9F%93%96)](https://git.io/typing-svg)
 
 **Gestione Rubrica CLI** è un'applicazione a riga di comando, sviluppata in **Java**, progettata per offrire una gestione semplice ed efficace dei contatti. Con un'interfaccia intuitiva, ti permette di visualizzare, aggiungere, modificare, eliminare e cercare utenti nella tua rubrica.
 
