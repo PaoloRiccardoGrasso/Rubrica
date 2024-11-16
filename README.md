@@ -1,5 +1,7 @@
 
-[![Java](https://img.shields.io/badge/Java-23-blue.svg?style=flat-square&logo=java)](https://www.oracle.com/java/) [![Download](https://img.shields.io/badge/Download-File-yellow.svg?style=flat-square&logo=github)](https://github.com/PaoloRiccardoGrasso/Rubrica/releases) [![Stars](https://img.shields.io/github/stars/PaoloRiccardoGrasso/Rubrica?style=flat-square&logo=github)](https://github.com/tuo-username/nome-repo/stargazers)
+[![Java](https://img.shields.io/badge/Java-23-blue.svg?style=flat-square&logo=java)](https://www.oracle.com/java/) [![Download](https://img.shields.io/badge/Download-File-yellow.svg?style=flat-square&logo=github)](https://github.com/PaoloRiccardoGrasso/Rubrica/releases) [![Stars](https://img.shields.io/github/stars/PaoloRiccardoGrasso/Rubrica?style=flat-square&logo=github)](https://github.com/tuo-username/nome-repo/stargazers) [![Build Status](https://img.shields.io/github/actions/workflow/status/PaoloRiccardoGrasso/Rubrica/build.yml?branch=main&style=flat-square&logo=github)](https://github.com/PaoloRiccardoGrasso/Rubrica/actions) [![Contributors](https://img.shields.io/github/contributors/PaoloRiccardoGrasso/Rubrica?style=flat-square&logo=github)](https://github.com/PaoloRiccardoGrasso/Rubrica/graphs/contributors)
+
+
 
 
 # Gestione Rubrica CLI in Java 📖  
