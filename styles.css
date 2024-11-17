@@ -1,0 +1,121 @@
+/* Base styling */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    line-height: 1.6;
+    color: #333;
+    background: #f4f4f4;
+}
+
+/* Header styling */
+.header {
+    text-align: center;
+    padding: 2rem;
+    background: #0078d4;
+    color: white;
+}
+
+.header h1 {
+    margin: 0;
+    font-size: 2.5rem;
+}
+
+.header p {
+    font-size: 1.2rem;
+}
+
+/* Badges section */
+.badges {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem;
+    padding: 1rem;
+    background: #fff;
+}
+
+.badges img {
+    max-height: 30px;
+}
+
+.status-badge {
+    background: green;
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+}
+
+/* Features section */
+.features {
+    padding: 2rem;
+    background: #fff;
+    margin: 1rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.features h2 {
+    text-align: center;
+    margin-bottom: 1rem;
+}
+
+.features ul {
+    list-style: none;
+    padding: 0;
+}
+
+.features li {
+    padding: 0.5rem 0;
+}
+
+/* Contributors section */
+.contributors {
+    padding: 2rem;
+    margin: 1rem;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.contributors h2 {
+    text-align: center;
+    margin-bottom: 1rem;
+}
+
+.collaborator {
+    display: flex;
+    align-items: center;
+    margin: 1rem 0;
+}
+
+.collaborator img {
+    border-radius: 50%;
+    margin-right: 1rem;
+}
+
+.collaborator div {
+    flex: 1;
+}
+
+.collaborator h3 {
+    margin: 0;
+}
+
+.collaborator p {
+    margin: 0.2rem 0;
+}
+
+/* Footer styling */
+footer {
+    text-align: center;
+    padding: 1rem;
+    background: #333;
+    color: white;
+    margin-top: 2rem;
+}
+
+footer a {
+    color: #f4d03f;
+    text-decoration: none;
+}
