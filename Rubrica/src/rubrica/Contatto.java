@@ -7,7 +7,6 @@ package rubrica;
  * 
  * 
  */
-public class Rubrica {
-
+public class Contatto {
     
 }
