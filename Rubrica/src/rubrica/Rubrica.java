@@ -27,6 +27,11 @@ public class Rubrica {
         rubrica.add(contatto);
         System.out.println("Contatto aggiunto con successo!");
     }
+    
+    public void rimuoviContatto(Contatto contatto){
+        rubrica.remove(contatto);
+        System.out.println("Contatto rimosso con successo!");
+    }
 
     @Override
     public String toString() {
