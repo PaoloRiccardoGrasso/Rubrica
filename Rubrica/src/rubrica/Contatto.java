@@ -28,18 +28,18 @@ public class Contatto {
         }
     }
 
+
     @Override
     public String toString() {
-        String s = "";
-        s += "[Nome: " + nome;
-        s += " Cognome: " + cognome;
-        s += " Num. di Telefono: " + numeroTelefono;
-        if (email == null) {
-            s += " E-Mail: N/D]";
-        } else {
-            s += " E-Mail: " + email + "]";
-        }
-        return s;
+        StringBuilder sb = new StringBuilder();
+        sb.append("\n");
+        sb.append("--------------- Contatto ---------------\n");
+        sb.append("Nome: ").append(nome).append("\n");
+        sb.append("Cognome: ").append(cognome).append("\n");
+        sb.append("Numero di Telefono: ").append(numeroTelefono).append("\n");
+        sb.append("E-Mail: ").append(email != null ? email : "N/D").append("\n");
+        sb.append("--------------- Aggiunto ---------------");
+        return sb.toString();
     }
 
     @Override
@@ -68,7 +68,4 @@ public class Contatto {
         return Objects.equals(this.cognome, other.cognome);
     }
 
-    
-    
-    
 }

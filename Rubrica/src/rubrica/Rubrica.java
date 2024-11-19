@@ -47,13 +47,14 @@ public class Rubrica {
     }
     
     
-    public void cercaContatto(){
+    //TODO Aggiustare il metodo
+    /*public void cercaContatto(){
         String cognome;
         boolean isContattoTrovato= false;
         int i=0;
         
         System.out.println("Inserire il cognome del contatto che si sta cercando: ");
-        cognome=tastiera.readLine();    //Fare la presa dell'input lol
+        //cognome=tastiera.readLine();    //Fare la presa dell'input lol
         
         do{
             
@@ -71,7 +72,7 @@ public class Rubrica {
         
         
         
-    }
+    }*/
     
     
     
