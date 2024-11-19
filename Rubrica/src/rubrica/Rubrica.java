@@ -6,7 +6,7 @@ import java.util.*;
  * Questa classe rappresenta una semplice rubrica telefonica contenenti i
  * contatti.
  *
- * @author Paolo Riccardo Grasso, Alessandro Di Nella, Mario Favoino, Matteo
+ * @author Paolo Riccardo Gasso, Alessandro Di Nella, Mario Favoino, Matteo
  * Lucia, Giuseppe Salomita
  * @version 1.0
  * @since 1.0
@@ -45,6 +45,39 @@ public class Rubrica {
         rubrica.remove(contatto);
         System.out.println("Contatto rimosso con successo!");
     }
+    
+    
+    public void cercaContatto(){
+        String cognome;
+        boolean isContattoTrovato= false;
+        int i=0;
+        
+        System.out.println("Inserire il cognome del contatto che si sta cercando: ");
+        cognome=tastiera.readLine();    //Fare la presa dell'input lol
+        
+        do{
+            
+            if(rubrica.get(0).cognome == cognome){
+                    isContattoTrovato=true;
+                    rubrica.get(0).toString();
+
+                }
+            i++;
+        }while(! isContattoTrovato);
+        
+            
+            
+        
+        
+        
+        
+    }
+    
+    
+    
+    
+    
+    
 
     @Override
     public String toString() {

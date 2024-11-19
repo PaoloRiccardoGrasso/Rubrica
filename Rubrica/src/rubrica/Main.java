@@ -13,7 +13,8 @@ import java.io.*;
 public class Main {
 
     public static void main(String[] args) {
-
+        /*InputStreamReader input = new InputStreamReader(System.in);     bo io l'ho scritto nel caso  -_-
+        BufferedReader tastiera = new BufferedReader(input);*/
     }
 
 }
