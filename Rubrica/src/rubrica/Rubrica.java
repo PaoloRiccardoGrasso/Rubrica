@@ -1,9 +1,9 @@
 package rubrica;
 
-import java.util.*;
+import java.util.ArrayList;
 
 /**
- * Questa classe rappresenta una semplice rubrica telefonica contenenti i
+ * Questa classe rappresenta una semplice rubrica telefonica contenente i
  * contatti.
  *
  * @author Paolo Riccardo Gasso, Alessandro Di Nella, Mario Favoino, Matteo
@@ -13,40 +13,46 @@ import java.util.*;
  */
 public class Rubrica {
 
-    public ArrayList<Contatto> rubrica = new ArrayList<>();
+    // Lista che contiene i contatti
+    private ArrayList<Contatto> rubrica = new ArrayList<>();
 
     /**
      * Aggiunge un contatto alla rubrica.
      *
-     * @param contatto I dati del contatto.
-     * @see Contatto.java
-     * @return Void
-     *
+     * @param nome   Il nome del contatto.
+     * @param cognome Il cognome del contatto.
+     * @param numTel Il numero di telefono del contatto.
+     * @param email  L'email del contatto (può essere null).
      */
     public void aggiungiContatto(Contatto contatto) {
-    if (rubrica.contains(contatto)) {
-        System.out.println("Contatto già esistente! Operazione annullata.");
-        return;
-    }
-    rubrica.add(contatto);
-    System.out.println("Contatto aggiunto con successo!");
-}
 
+        // Controlla se il contatto esiste già nella rubrica
+        if (rubrica.contains(contatto)) {
+            System.out.println("Contatto già esistente! Non è stato aggiunto.");
+            return;
+        } else {
+            rubrica.add(contatto);
+        }
+    }
 
     /**
      * Rimuove un contatto dalla rubrica.
      *
-     * @param contatto I dati del contatto.
-     * @see Contatto.java
-     * @return Void
-     *
+     * @param contatto Il contatto da rimuovere.
      */
     public void rimuoviContatto(Contatto contatto) {
-        rubrica.remove(contatto);
-        System.out.println("Contatto rimosso con successo!");
+        if (rubrica.remove(contatto)) {
+            System.out.println("Contatto rimosso con successo!");
+        } else {
+            System.out.println("Contatto non trovato nella rubrica!");
+        }
     }
-    
-    
+
+    /**
+     * Cerca un contatto per cognome.
+     *
+     * @param cognome Il cognome del contatto da cercare.
+     */
     //TODO Aggiustare il metodo
     /*public void cercaContatto(){
         String cognome;
@@ -73,21 +79,19 @@ public class Rubrica {
         
         
     }*/
-    
-    
-    
-    
-    
-    
 
     @Override
     public String toString() {
-        String s = "";
-        for (Contatto contatto : rubrica) {
-            s += "\n" + contatto;
+        if (rubrica.isEmpty()) {
+            return "La rubrica è vuota.";
         }
 
-        return s;
-    }
+        StringBuilder s = new StringBuilder("Rubrica:");
+        for (Contatto contatto : rubrica) {
+            s.append("\n").append(contatto);
+        }
 
+        return s.toString();
+    }
 }
+

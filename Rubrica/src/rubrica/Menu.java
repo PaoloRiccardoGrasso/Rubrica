@@ -84,6 +84,8 @@ public class Menu {
             rubrica1.aggiungiContatto(contatto);
             System.out.println(contatto);
 
+            
+
             System.out.print("Premi invio per continuare... ");
             scanner.nextLine();
 
@@ -109,6 +111,8 @@ public class Menu {
                 break;
             case 5:
                 System.out.println(rubrica1);
+                System.out.print("Premi invio per continuare... ");
+                scanner.nextLine();
                 break;
             case 6:
                 System.out.println("Uscita dal programma.");
