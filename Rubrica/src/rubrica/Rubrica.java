@@ -57,9 +57,9 @@ public class Rubrica {
         
         do{
             
-            if(rubrica.get(0).cognome == cognome){
+            if(rubrica.get(i).cognome == cognome){
                     isContattoTrovato=true;
-                    rubrica.get(0).toString();
+                    rubrica.get(i).toString();
 
                 }
             i++;
