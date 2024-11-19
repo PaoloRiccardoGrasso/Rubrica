@@ -24,11 +24,24 @@ public class Rubrica {
      *
      */
     public void aggiungiContatto(Contatto contatto) {
-        rubrica.add(contatto);
-        System.out.println("Contatto aggiunto con successo!");
+    if (rubrica.contains(contatto)) {
+        System.out.println("Contatto già esistente! Operazione annullata.");
+        return;
     }
-    
-    public void rimuoviContatto(Contatto contatto){
+    rubrica.add(contatto);
+    System.out.println("Contatto aggiunto con successo!");
+}
+
+
+    /**
+     * Rimuove un contatto dalla rubrica.
+     *
+     * @param contatto I dati del contatto.
+     * @see Contatto.java
+     * @return Void
+     *
+     */
+    public void rimuoviContatto(Contatto contatto) {
         rubrica.remove(contatto);
         System.out.println("Contatto rimosso con successo!");
     }

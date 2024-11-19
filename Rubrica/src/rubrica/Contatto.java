@@ -1,5 +1,7 @@
 package rubrica;
 
+import java.util.Objects;
+
 /**
  *
  * @author Paolo Riccardo Grasso, Alessandro Di Nella, Mario Favoino, Matteo
@@ -40,4 +42,33 @@ public class Contatto {
         return s;
     }
 
+    @Override
+    public int hashCode() {
+        int hash = 5;
+        hash = 89 * hash + Objects.hashCode(this.nome);
+        hash = 89 * hash + Objects.hashCode(this.cognome);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Contatto other = (Contatto) obj;
+        if (!Objects.equals(this.nome, other.nome)) {
+            return false;
+        }
+        return Objects.equals(this.cognome, other.cognome);
+    }
+
+    
+    
+    
 }
