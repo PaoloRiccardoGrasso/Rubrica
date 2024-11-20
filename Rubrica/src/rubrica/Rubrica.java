@@ -14,7 +14,7 @@ import java.util.ArrayList;
 public class Rubrica {
 
     // Lista che contiene i contatti
-    private ArrayList<Contatto> rubrica = new ArrayList<>();
+    private ArrayList<Contatto> rubrica = new ArrayList();
 
     /**
      * Aggiunge un contatto alla rubrica.
@@ -51,20 +51,19 @@ public class Rubrica {
     /**
      * Cerca un contatto per cognome.
      *
+     * @param nome Il nome del contatto da cercare.
      * @param cognome Il cognome del contatto da cercare.
      */
-    //TODO Aggiustare il metodo
-    /*public void cercaContatto(){
-        String cognome;
+    //TODO Aggiustare il metodociao
+    public void cercaContatto(String nome, String cognome){
         boolean isContattoTrovato= false;
         int i=0;
         
-        System.out.println("Inserire il cognome del contatto che si sta cercando: ");
-        //cognome=tastiera.readLine();    //Fare la presa dell'input lol
         
         do{
             
-            if(rubrica.get(i).cognome == cognome){
+            //se il cognome del contatto di posizione i^esima nella rubrica è uguale al 
+            if(rubrica.get(i).nome.equals(nome) && rubrica.get(i).cognome.equals(cognome)){
                     isContattoTrovato=true;
                     rubrica.get(i).toString();
 
@@ -78,7 +77,7 @@ public class Rubrica {
         
         
         
-    }*/
+    }
 
     @Override
     public String toString() {

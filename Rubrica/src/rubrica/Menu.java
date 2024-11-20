@@ -46,7 +46,7 @@ public class Menu {
         System.out.println("6. Esci");
     }
 
-    public static void scelta1() {
+    private static void scelta1() {
         String nome, cognome, numTel, email;
         try {
             System.out.print("Inserisci nome> ");
