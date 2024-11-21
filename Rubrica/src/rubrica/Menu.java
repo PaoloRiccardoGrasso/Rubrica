@@ -44,6 +44,38 @@ public class Menu {
         System.out.println("4. Ricerca Contatto");
         System.out.println("5. Visualizza Rubrica");
         System.out.println("6. Esci");
+        System.out.println("---------------------");
+    }
+
+    private static void gestisciScelta(int scelta) {
+        switch (scelta) {
+            case 1:
+                scelta1();
+                break;
+            case 2:
+                scelta2();
+                break;
+            case 3:
+                System.out.println("Modifica Contatto selezionato.");
+                break;
+            case 4:
+                scelta4();
+                break;
+            case 5:
+                System.out.println(rubrica1);
+                System.out.print("Premi invio per continuare... ");
+                scanner.nextLine();
+                scanner.nextLine();
+                break;
+            case 6:
+                System.out.println("Uscita dal programma.");
+                System.out.print("Premi invio per continuare... ");
+                scanner.nextLine();
+                break;
+            default:
+                System.out.println("Scelta non valida. Riprova.");
+                break;
+        }
     }
 
     private static void scelta1() {
@@ -84,8 +116,6 @@ public class Menu {
             rubrica1.aggiungiContatto(contatto);
             System.out.println(contatto);
 
-            
-
             System.out.print("Premi invio per continuare... ");
             scanner.nextLine();
 
@@ -95,34 +125,28 @@ public class Menu {
 
     }
 
-    private static void gestisciScelta(int scelta) {
-        switch (scelta) {
-            case 1:
-                scelta1();
-                break;
-            case 2:
-                System.out.println("Rimuovi Contatto selezionato.");
-                break;
-            case 3:
-                System.out.println("Modifica Contatto selezionato.");
-                break;
-            case 4:
-                System.out.println("Ricerca Contatto selezionato.");
-                break;
-            case 5:
-                System.out.println(rubrica1);
-                System.out.print("Premi invio per continuare... ");
-                scanner.nextLine();
-                break;
-            case 6:
-                System.out.println("Uscita dal programma.");
-                System.out.print("Premi invio per continuare... ");
-                scanner.nextLine();
-                break;
-            default:
-                System.out.println("Scelta non valida. Riprova.");
-                break;
+    private static void scelta2() {
+
+    }
+
+    private static void scelta3() {
+
+    }
+
+    private static void scelta4() {
+        String nome = null, cognome = null;
+
+        try {
+            System.out.print("Inserisci nome> ");
+            nome = scanner.next();
+            System.out.print("Inserisci cognome> ");
+            cognome = scanner.next();
+        } catch (Exception e) {
+            System.out.println("Errore generico! ");
         }
+        
+        rubrica1.cercaContatto(nome, cognome);
+
     }
 
 }

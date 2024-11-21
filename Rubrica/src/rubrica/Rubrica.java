@@ -19,10 +19,10 @@ public class Rubrica {
     /**
      * Aggiunge un contatto alla rubrica.
      *
-     * @param nome   Il nome del contatto.
+     * @param nome Il nome del contatto.
      * @param cognome Il cognome del contatto.
      * @param numTel Il numero di telefono del contatto.
-     * @param email  L'email del contatto (può essere null).
+     * @param email L'email del contatto (può essere null).
      */
     public void aggiungiContatto(Contatto contatto) {
 
@@ -55,28 +55,21 @@ public class Rubrica {
      * @param cognome Il cognome del contatto da cercare.
      */
     //TODO Aggiustare il metodociao
-    public void cercaContatto(String nome, String cognome){
-        boolean isContattoTrovato= false;
-        int i=0;
-        
-        
-        do{
-            
-            //se il cognome del contatto di posizione i^esima nella rubrica è uguale al 
-            if(rubrica.get(i).nome.equals(nome) && rubrica.get(i).cognome.equals(cognome)){
-                    isContattoTrovato=true;
-                    rubrica.get(i).toString();
+    public void cercaContatto(String nome, String cognome) {
+        boolean isContattoTrovato = false;
+        int i = 0;
 
-                }
+        do {
+
+            //se il cognome del contatto di posizione i^esima nella rubrica è uguale al 
+            if (rubrica.get(i).nome.equals(nome) && rubrica.get(i).cognome.equals(cognome)) {
+                isContattoTrovato = true;
+                System.out.println(rubrica.get(i).toString());
+
+            }
             i++;
-        }while(! isContattoTrovato);
-        
-            
-            
-        
-        
-        
-        
+        } while (!isContattoTrovato);
+
     }
 
     @Override
@@ -85,12 +78,11 @@ public class Rubrica {
             return "La rubrica è vuota.";
         }
 
-        StringBuilder s = new StringBuilder("Rubrica:");
+        String s = "";
         for (Contatto contatto : rubrica) {
-            s.append("\n").append(contatto);
+            s += (contatto);
         }
 
-        return s.toString();
+        return s;
     }
 }
-
