@@ -2,6 +2,8 @@
 [![Java](https://img.shields.io/badge/Java-23-blue.svg?style=flat-square&logo=java)](https://www.oracle.com/java/) [![Download](https://img.shields.io/badge/Download-File-yellow.svg?style=flat-square&logo=github)](https://github.com/PaoloRiccardoGrasso/Rubrica/releases) [![Stars](https://img.shields.io/github/stars/PaoloRiccardoGrasso/Rubrica?style=flat-square&logo=github)](https://github.com/tuo-username/nome-repo/stargazers) [![Build Status](https://img.shields.io/github/actions/workflow/status/PaoloRiccardoGrasso/Rubrica/build.yml?branch=main&style=flat-square&logo=github)](https://github.com/PaoloRiccardoGrasso/Rubrica/actions) [![Contributors](https://img.shields.io/github/contributors/PaoloRiccardoGrasso/Rubrica?style=flat-square&logo=github&cacheSeconds=60)](https://github.com/PaoloRiccardoGrasso/Rubrica/graphs/contributors)
 [![Status](https://img.shields.io/badge/status-in%20progress-green?style=flat-square)](https://github.com/PaoloRiccardoGrasso/Rubrica)
 
+[![Typing SVG](https://readme-typing-svg.demolab.com?font=Fira+Code&size=28&pause=1000&color=F70000&random=true&width=435&lines=Alpha+Version+Released!)](https://git.io/typing-svg)
+
 [![Typing SVG](https://readme-typing-svg.demolab.com?font=Helvetica&duration=5500&pause=1000&color=000000&repeat=false&random=true&width=435&lines=CLI+Address+Book+Management+in+Java+%F0%9F%93%96)](https://git.io/typing-svg)
 
 **CLI Address Book Management** is a command-line application, developed in **Java**, designed to provide simple and effective contact management. With an intuitive interface, it allows you to view, add, edit, delete, and search for contacts in your address book.
