@@ -16,18 +16,19 @@ public class Menu {
 
     public static void menu() {
 
-        int scelta = 0;
+        int scelta;
         do {
             cls();
             interfaccia();
+            System.out.print("Scelta> ");
+
             try {
-                System.out.print("Scelta> ");
-                scelta = scanner.nextInt();
-                //TODO Eccezzioni
-            } catch (Exception e) {
-                System.out.println(e.getMessage());
+                scelta = Integer.parseInt(scanner.nextLine());
+                gestisciScelta(scelta);
+            } catch (NumberFormatException e) {
+                System.out.println("Errore: inserire un numero intero valido.");
+                scelta = -1;
             }
-            gestisciScelta(scelta);
         } while (scelta != 6);
     }
 
@@ -56,7 +57,7 @@ public class Menu {
                 scelta2();
                 break;
             case 3:
-                System.out.println("Modifica Contatto selezionato.");
+                scelta3();
                 break;
             case 4:
                 scelta4();
@@ -64,7 +65,6 @@ public class Menu {
             case 5:
                 System.out.println(rubrica1);
                 System.out.print("Premi invio per continuare... ");
-                scanner.nextLine();
                 scanner.nextLine();
                 break;
             case 6:
@@ -126,11 +126,81 @@ public class Menu {
     }
 
     private static void scelta2() {
+        String nome = null, cognome = null;
+        try {
+            System.out.print("Inserisci nome> ");
+            nome = scanner.next();
+            System.out.print("Inserisci cognome> ");
+            cognome = scanner.next();
+        } catch (Exception e) {
+            System.out.println("Errore generico! ");
+        }
+
+        System.out.println("Stai per rimuovere: ");
+        int indiceContatto = rubrica1.cercaContatto(nome, cognome);
+        System.out.print("Premi invio per continuare... ");
+        scanner.nextLine();
+        scanner.nextLine();
+        rubrica1.rimuoviContatto(indiceContatto);
+        System.out.print("Premi invio per continuare... ");
+        scanner.nextLine();
 
     }
 
     private static void scelta3() {
+        String nome = null, cognome = null, nome1, cognome1, numTel, email;
+        try {
+            System.out.print("Inserisci nome> ");
+            nome = scanner.next();
+            System.out.print("Inserisci cognome> ");
+            cognome = scanner.next();
+        } catch (Exception e) {
+            System.out.println("Errore generico! ");
+        }
 
+        int indiceContatto = rubrica1.cercaContatto(nome, cognome);
+        try {
+            System.out.print("Inserisci nome> ");
+            nome = scanner.next();;
+            System.out.print("Inserisci cognome> ");
+            cognome = scanner.next();
+            while (true) {
+                try {
+                    System.out.print("Inserisci numero> ");
+                    numTel = scanner.next();;
+
+                    // Controllo con regex
+                    /*
+                    ^: inizio della stringa.
+                    +?: il simbolo + è facoltativo.
+                        d{9,}:
+                            \\d indica una cifra.
+                            {9,} indica che devono esserci almeno 9 cifre (non c'è limite superiore).
+                    $: fine della stringa.*/
+                    if (!numTel.matches("^\\+?\\d{9,}$")) {
+                        throw new IllegalArgumentException("Il numero deve contenere solo cifre (min. 9) , opzionalmente, un '+' all'inizio.");
+                    }
+
+                    break;
+
+                } catch (IllegalArgumentException e) {
+                    System.out.println("Errore: " + e.getMessage());
+                }
+            }
+            scanner.nextLine();
+            System.out.print("Inserisci Email (premere invio se sprovvisti> ");
+            email = scanner.nextLine();
+            
+            Contatto contatto = new Contatto(nome, cognome, numTel, email);
+            rubrica1.modificaContatto(indiceContatto, contatto);
+            System.out.println(contatto);
+
+            System.out.print("Premi invio per continuare... ");
+            scanner.nextLine();
+
+            //TODO Eccezzioni
+        } catch (Exception e) {
+        }
     }
 
     private static void scelta4() {

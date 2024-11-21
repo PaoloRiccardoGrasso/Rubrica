@@ -28,18 +28,17 @@ public class Contatto {
         }
     }
 
-
     @Override
     public String toString() {
-        StringBuilder sb = new StringBuilder();
-        sb.append("\n");
-        sb.append("--------------- Contatto ---------------\n");
-        sb.append("Nome: ").append(nome).append("\n");
-        sb.append("Cognome: ").append(cognome).append("\n");
-        sb.append("Numero di Telefono: ").append(numeroTelefono).append("\n");
-        sb.append("E-Mail: ").append(email != null ? email : "N/D").append("\n");
-        sb.append("--------------- Aggiunto ---------------");
-        return sb.toString();
+        String s = "";
+        s += "\n";
+        s += "--------------- Contatto ---------------\n";
+        s += "Nome: " + nome + "\n";
+        s += "Cognome: " + cognome + "\n";
+        s += "Numero di Telefono: " + numeroTelefono + "\n";
+        s += "E-Mail: " + (email != null ? email : "N/D") + "\n";
+        s += "----------------------------------------";
+        return s;
     }
 
     @Override

@@ -40,8 +40,10 @@ public class Rubrica {
      *
      * @param contatto Il contatto da rimuovere.
      */
-    public void rimuoviContatto(Contatto contatto) {
-        if (rubrica.remove(contatto)) {
+    public void rimuoviContatto(int indiceContatto) {
+
+        if (indiceContatto != -1) { // Verifica che il contatto esista
+            rubrica.remove(indiceContatto); // Rimuove il contatto dalla lista
             System.out.println("Contatto rimosso con successo!");
         } else {
             System.out.println("Contatto non trovato nella rubrica!");
@@ -55,22 +57,38 @@ public class Rubrica {
      * @param cognome Il cognome del contatto da cercare.
      */
     //TODO Aggiustare il metodociao
-    public void cercaContatto(String nome, String cognome) {
+    public int cercaContatto(String nome, String cognome) {
         boolean isContattoTrovato = false;
-        int i = 0;
+        int indiceContatto;
 
-        do {
-
-            //se il cognome del contatto di posizione i^esima nella rubrica è uguale al 
-            if (rubrica.get(i).nome.equals(nome) && rubrica.get(i).cognome.equals(cognome)) {
+        for (int i = 0; i < rubrica.size(); i++) {
+            if (rubrica.get(i).nome.equalsIgnoreCase(nome) && rubrica.get(i).cognome.equalsIgnoreCase(cognome)) {
                 isContattoTrovato = true;
-                System.out.println("Contatto trovato! ");
+                indiceContatto = i;
                 System.out.println(rubrica.get(i).toString());
-
+                return indiceContatto;
             }
-            i++;
-        } while (!isContattoTrovato);
+        }
 
+        if (!isContattoTrovato) {
+            System.out.println("Contatto non trovato!");
+            indiceContatto = -1;
+            return indiceContatto;
+        }
+
+        return -1;
+    }
+
+    public void modificaContatto(int indiceContatto, Contatto contatto) {
+
+        if (indiceContatto != -1) {
+            rubrica.remove(indiceContatto);
+            rubrica.add(indiceContatto, contatto);
+            System.out.println("Contatto aggiornato con successo! ");
+
+        } else {
+            System.out.println("Contatto non aggiornato perchè non trovato! ");
+        }
     }
 
     @Override
@@ -80,6 +98,7 @@ public class Rubrica {
         }
 
         String s = "";
+        s += "--------------- Rubrica ----------------\n";
         for (Contatto contatto : rubrica) {
             s += (contatto);
         }
