@@ -144,8 +144,11 @@ public class Menu {
         } catch (Exception e) {
             System.out.println("Errore generico! ");
         }
-        
+
         rubrica1.cercaContatto(nome, cognome);
+        System.out.print("Premi invio per continuare... ");
+        scanner.nextLine();
+        scanner.nextLine();
 
     }
 

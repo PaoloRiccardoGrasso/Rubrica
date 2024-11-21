@@ -64,6 +64,7 @@ public class Rubrica {
             //se il cognome del contatto di posizione i^esima nella rubrica è uguale al 
             if (rubrica.get(i).nome.equals(nome) && rubrica.get(i).cognome.equals(cognome)) {
                 isContattoTrovato = true;
+                System.out.println("Contatto trovato! ");
                 System.out.println(rubrica.get(i).toString());
 
             }
