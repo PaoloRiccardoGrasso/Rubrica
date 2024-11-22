@@ -82,9 +82,9 @@ public class Menu {
         String nome, cognome, numTel, email;
         try {
             System.out.print("Inserisci nome> ");
-            nome = scanner.next();
+            nome = scanner.nextLine();
             System.out.print("Inserisci cognome> ");
-            cognome = scanner.next();
+            cognome = scanner.nextLine();
             while (true) {
                 try {
                     System.out.print("Inserisci numero> ");
@@ -129,9 +129,9 @@ public class Menu {
         String nome = null, cognome = null;
         try {
             System.out.print("Inserisci nome> ");
-            nome = scanner.next();
+            nome = scanner.nextLine();
             System.out.print("Inserisci cognome> ");
-            cognome = scanner.next();
+            cognome = scanner.nextLine();
         } catch (Exception e) {
             System.out.println("Errore generico! ");
         }
@@ -159,15 +159,18 @@ public class Menu {
         }
 
         int indiceContatto = rubrica1.cercaContatto(nome, cognome);
+        if(indiceContatto != -1){
+            
+        
         try {
             System.out.print("Inserisci nome> ");
-            nome = scanner.next();;
+            nome = scanner.next();
             System.out.print("Inserisci cognome> ");
             cognome = scanner.next();
             while (true) {
                 try {
                     System.out.print("Inserisci numero> ");
-                    numTel = scanner.next();;
+                    numTel = scanner.next();
 
                     // Controllo con regex
                     /*
@@ -190,7 +193,7 @@ public class Menu {
             scanner.nextLine();
             System.out.print("Inserisci Email (premere invio se sprovvisti> ");
             email = scanner.nextLine();
-            
+
             Contatto contatto = new Contatto(nome, cognome, numTel, email);
             rubrica1.modificaContatto(indiceContatto, contatto);
             System.out.println(contatto);
@@ -200,6 +203,11 @@ public class Menu {
 
             //TODO Eccezzioni
         } catch (Exception e) {
+        }
+        } else {
+            System.out.print("Premi invio per continuare... ");
+            scanner.nextLine();
+            scanner.nextLine();
         }
     }
 
