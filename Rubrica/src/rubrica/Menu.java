@@ -84,6 +84,7 @@ public class Menu {
         boolean isContattoEsiste = false;
         scanner.nextLine();
         try {
+<<<<<<< HEAD
             
             /*
             
@@ -123,6 +124,12 @@ public class Menu {
             
             //------------------------------------------------------
 
+=======
+            System.out.print("Inserisci nome> ");
+            nome = scanner.nextLine();
+            System.out.print("Inserisci cognome> ");
+            cognome = scanner.nextLine();
+>>>>>>> 3dc4404f2c77d00e937a9289fae43f4477df9f8a
             while (true) {
                 try {
                     System.out.print("Inserisci numero> ");
@@ -166,6 +173,7 @@ public class Menu {
     private static void scelta2() {
         String nome = null, cognome = null;
         try {
+<<<<<<< HEAD
             do {
                 System.out.print("Inserisci nome> ");
                 nome = scanner.nextLine();
@@ -175,6 +183,12 @@ public class Menu {
                 System.out.print("Inserisci cognome> ");
                 cognome = scanner.nextLine();
             } while (cognome.equals(""));
+=======
+            System.out.print("Inserisci nome> ");
+            nome = scanner.nextLine();
+            System.out.print("Inserisci cognome> ");
+            cognome = scanner.nextLine();
+>>>>>>> 3dc4404f2c77d00e937a9289fae43f4477df9f8a
         } catch (Exception e) {
             System.out.println("Errore generico! ");
         }
@@ -207,6 +221,7 @@ public class Menu {
         }
 
         int indiceContatto = rubrica1.cercaContatto(nome, cognome);
+<<<<<<< HEAD
         scanner.nextLine();
         try {
             do {
@@ -219,6 +234,16 @@ public class Menu {
                 cognome = scanner.nextLine();
             } while (cognome.equals(""));
 
+=======
+        if(indiceContatto != -1){
+            
+        
+        try {
+            System.out.print("Inserisci nome> ");
+            nome = scanner.next();
+            System.out.print("Inserisci cognome> ");
+            cognome = scanner.next();
+>>>>>>> 3dc4404f2c77d00e937a9289fae43f4477df9f8a
             while (true) {
                 try {
                     System.out.print("Inserisci numero> ");
@@ -255,6 +280,11 @@ public class Menu {
 
             //TODO Eccezzioni
         } catch (Exception e) {
+        }
+        } else {
+            System.out.print("Premi invio per continuare... ");
+            scanner.nextLine();
+            scanner.nextLine();
         }
     }
 
