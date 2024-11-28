@@ -84,8 +84,7 @@ public class Menu {
         boolean isContattoEsiste = false;
         scanner.nextLine();
         try {
-<<<<<<< HEAD
-            
+
             /*
             
             do {
@@ -97,7 +96,7 @@ public class Menu {
                     System.out.print("Inserisci cognome> ");
                     cognome = scanner.nextLine();
                 } while (cognome.equals(""));
-            */
+             */
             //-------------------------------------------------
             do {
                 do {
@@ -112,24 +111,21 @@ public class Menu {
 
                 for (int i = 0; i < rubrica1.rubrica.size(); i++) {
                     if (nome.equals(rubrica1.rubrica.get(i).nome)) {
-                        if(cognome.equals(rubrica1.rubrica.get(i).cognome)){
+                        if (cognome.equals(rubrica1.rubrica.get(i).cognome)) {
                             isContattoEsiste = true;
                             System.out.println("Contatto già esistente! Non Aggiunto");
                         } else {
                             isContattoEsiste = false;
                         }
-                    } 
+                    }
                 }
             } while (isContattoEsiste == true);
-            
-            //------------------------------------------------------
 
-=======
+            //------------------------------------------------------
             System.out.print("Inserisci nome> ");
             nome = scanner.nextLine();
             System.out.print("Inserisci cognome> ");
             cognome = scanner.nextLine();
->>>>>>> 3dc4404f2c77d00e937a9289fae43f4477df9f8a
             while (true) {
                 try {
                     System.out.print("Inserisci numero> ");
@@ -173,7 +169,7 @@ public class Menu {
     private static void scelta2() {
         String nome = null, cognome = null;
         try {
-<<<<<<< HEAD
+
             do {
                 System.out.print("Inserisci nome> ");
                 nome = scanner.nextLine();
@@ -183,12 +179,12 @@ public class Menu {
                 System.out.print("Inserisci cognome> ");
                 cognome = scanner.nextLine();
             } while (cognome.equals(""));
-=======
+
             System.out.print("Inserisci nome> ");
             nome = scanner.nextLine();
             System.out.print("Inserisci cognome> ");
             cognome = scanner.nextLine();
->>>>>>> 3dc4404f2c77d00e937a9289fae43f4477df9f8a
+
         } catch (Exception e) {
             System.out.println("Errore generico! ");
         }
@@ -221,7 +217,7 @@ public class Menu {
         }
 
         int indiceContatto = rubrica1.cercaContatto(nome, cognome);
-<<<<<<< HEAD
+
         scanner.nextLine();
         try {
             do {
@@ -233,54 +229,55 @@ public class Menu {
                 System.out.print("Inserisci cognome> ");
                 cognome = scanner.nextLine();
             } while (cognome.equals(""));
+        } catch (Exception e) {
+            System.out.println("Errore generico! ");
+        }
 
-=======
-        if(indiceContatto != -1){
-            
-        
-        try {
-            System.out.print("Inserisci nome> ");
-            nome = scanner.next();
-            System.out.print("Inserisci cognome> ");
-            cognome = scanner.next();
->>>>>>> 3dc4404f2c77d00e937a9289fae43f4477df9f8a
-            while (true) {
-                try {
-                    System.out.print("Inserisci numero> ");
-                    numTel = scanner.next();
+        if (indiceContatto != -1) {
 
-                    // Controllo con regex
-                    /*
+            try {
+                System.out.print("Inserisci nome> ");
+                nome = scanner.next();
+                System.out.print("Inserisci cognome> ");
+                cognome = scanner.next();
+
+                while (true) {
+                    try {
+                        System.out.print("Inserisci numero> ");
+                        numTel = scanner.next();
+
+                        // Controllo con regex
+                        /*
                     ^: inizio della stringa.
                     +?: il simbolo + è facoltativo.
                         d{9,}:
                             \\d indica una cifra.
                             {9,} indica che devono esserci almeno 9 cifre (non c'è limite superiore).
                     $: fine della stringa.*/
-                    if (!numTel.matches("^\\+?\\d{9,}$")) {
-                        throw new IllegalArgumentException("Il numero deve contenere solo cifre (min. 9) , opzionalmente, un '+' all'inizio.");
+                        if (!numTel.matches("^\\+?\\d{9,}$")) {
+                            throw new IllegalArgumentException("Il numero deve contenere solo cifre (min. 9) , opzionalmente, un '+' all'inizio.");
+                        }
+
+                        break;
+
+                    } catch (IllegalArgumentException e) {
+                        System.out.println("Errore: " + e.getMessage());
                     }
-
-                    break;
-
-                } catch (IllegalArgumentException e) {
-                    System.out.println("Errore: " + e.getMessage());
                 }
+                scanner.nextLine();
+                System.out.print("Inserisci Email (premere invio se sprovvisti)> ");
+                email = scanner.nextLine();
+
+                Contatto contatto = new Contatto(nome, cognome, numTel, email);
+                rubrica1.modificaContatto(indiceContatto, contatto);
+                System.out.println(contatto);
+
+                System.out.print("Premi invio per continuare... ");
+                scanner.nextLine();
+
+                //TODO Eccezzioni
+            } catch (Exception e) {
             }
-            scanner.nextLine();
-            System.out.print("Inserisci Email (premere invio se sprovvisti)> ");
-            email = scanner.nextLine();
-
-            Contatto contatto = new Contatto(nome, cognome, numTel, email);
-            rubrica1.modificaContatto(indiceContatto, contatto);
-            System.out.println(contatto);
-
-            System.out.print("Premi invio per continuare... ");
-            scanner.nextLine();
-
-            //TODO Eccezzioni
-        } catch (Exception e) {
-        }
         } else {
             System.out.print("Premi invio per continuare... ");
             scanner.nextLine();
