@@ -64,6 +64,7 @@ public class Menu {
                 scelta4();
                 break;
             case 5:
+                scanner.nextLine();
                 System.out.println(rubrica1);
                 System.out.print("Premi invio per continuare... ");
                 scanner.nextLine();
@@ -114,6 +115,9 @@ public class Menu {
                         if (cognome.equals(rubrica1.rubrica.get(i).cognome)) {
                             isContattoEsiste = true;
                             System.out.println("Contatto già esistente! Non Aggiunto");
+                            System.out.print("Premi invio per continuare... ");
+                            scanner.nextLine();
+                            cls();
                         } else {
                             isContattoEsiste = false;
                         }
@@ -122,10 +126,6 @@ public class Menu {
             } while (isContattoEsiste == true);
 
             //------------------------------------------------------
-            System.out.print("Inserisci nome> ");
-            nome = scanner.nextLine();
-            System.out.print("Inserisci cognome> ");
-            cognome = scanner.nextLine();
             while (true) {
                 try {
                     System.out.print("Inserisci numero> ");
@@ -180,11 +180,6 @@ public class Menu {
                 cognome = scanner.nextLine();
             } while (cognome.equals(""));
 
-            System.out.print("Inserisci nome> ");
-            nome = scanner.nextLine();
-            System.out.print("Inserisci cognome> ");
-            cognome = scanner.nextLine();
-
         } catch (Exception e) {
             System.out.println("Errore generico! ");
         }
@@ -219,27 +214,18 @@ public class Menu {
         int indiceContatto = rubrica1.cercaContatto(nome, cognome);
 
         scanner.nextLine();
-        try {
-            do {
-                System.out.print("Inserisci nome> ");
-                nome = scanner.nextLine();
-            } while (nome.equals(""));
-
-            do {
-                System.out.print("Inserisci cognome> ");
-                cognome = scanner.nextLine();
-            } while (cognome.equals(""));
-        } catch (Exception e) {
-            System.out.println("Errore generico! ");
-        }
-
         if (indiceContatto != -1) {
 
             try {
-                System.out.print("Inserisci nome> ");
-                nome = scanner.next();
-                System.out.print("Inserisci cognome> ");
-                cognome = scanner.next();
+                do {
+                    System.out.print("Inserisci nome> ");
+                    nome = scanner.nextLine();
+                } while (nome.equals(""));
+
+                do {
+                    System.out.print("Inserisci cognome> ");
+                    cognome = scanner.nextLine();
+                } while (cognome.equals(""));
 
                 while (true) {
                     try {
@@ -288,6 +274,7 @@ public class Menu {
     private static void scelta4() {
         String nome = null, cognome = null;
 
+        scanner.nextLine();
         try {
             do {
                 System.out.print("Inserisci nome> ");
