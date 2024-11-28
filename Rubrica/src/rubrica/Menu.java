@@ -18,12 +18,13 @@ public class Menu {
 
         int scelta;
         do {
+
             cls();
             interfaccia();
             System.out.print("Scelta> ");
 
             try {
-                scelta = Integer.parseInt(scanner.nextLine());
+                scelta = scanner.nextInt();
                 gestisciScelta(scelta);
             } catch (NumberFormatException e) {
                 System.out.println("Errore: inserire un numero intero valido.");
@@ -80,11 +81,48 @@ public class Menu {
 
     private static void scelta1() {
         String nome, cognome, numTel, email;
+        boolean isContattoEsiste = false;
+        scanner.nextLine();
         try {
-            System.out.print("Inserisci nome> ");
-            nome = scanner.next();
-            System.out.print("Inserisci cognome> ");
-            cognome = scanner.next();
+            
+            /*
+            
+            do {
+                    System.out.print("Inserisci nome> ");
+                    nome = scanner.nextLine();
+                } while (nome.equals(""));
+
+                do {
+                    System.out.print("Inserisci cognome> ");
+                    cognome = scanner.nextLine();
+                } while (cognome.equals(""));
+            */
+            //-------------------------------------------------
+            do {
+                do {
+                    System.out.print("Inserisci nome> ");
+                    nome = scanner.nextLine();
+                } while (nome.equals(""));
+
+                do {
+                    System.out.print("Inserisci cognome> ");
+                    cognome = scanner.nextLine();
+                } while (cognome.equals(""));
+
+                for (int i = 0; i < rubrica1.rubrica.size(); i++) {
+                    if (nome.equals(rubrica1.rubrica.get(i).nome)) {
+                        if(cognome.equals(rubrica1.rubrica.get(i).cognome)){
+                            isContattoEsiste = true;
+                            System.out.println("Contatto già esistente! Non Aggiunto");
+                        } else {
+                            isContattoEsiste = false;
+                        }
+                    } 
+                }
+            } while (isContattoEsiste == true);
+            
+            //------------------------------------------------------
+
             while (true) {
                 try {
                     System.out.print("Inserisci numero> ");
@@ -109,7 +147,7 @@ public class Menu {
                 }
             }
             scanner.nextLine();
-            System.out.print("Inserisci Email (premere invio se sprovvisti> ");
+            System.out.print("Inserisci Email (premere invio se sprovvisti)> ");
             email = scanner.nextLine();
 
             Contatto contatto = new Contatto(nome, cognome, numTel, email);
@@ -128,10 +166,15 @@ public class Menu {
     private static void scelta2() {
         String nome = null, cognome = null;
         try {
-            System.out.print("Inserisci nome> ");
-            nome = scanner.next();
-            System.out.print("Inserisci cognome> ");
-            cognome = scanner.next();
+            do {
+                System.out.print("Inserisci nome> ");
+                nome = scanner.nextLine();
+            } while (nome.equals(""));
+
+            do {
+                System.out.print("Inserisci cognome> ");
+                cognome = scanner.nextLine();
+            } while (cognome.equals(""));
         } catch (Exception e) {
             System.out.println("Errore generico! ");
         }
@@ -139,7 +182,6 @@ public class Menu {
         System.out.println("Stai per rimuovere: ");
         int indiceContatto = rubrica1.cercaContatto(nome, cognome);
         System.out.print("Premi invio per continuare... ");
-        scanner.nextLine();
         scanner.nextLine();
         rubrica1.rimuoviContatto(indiceContatto);
         System.out.print("Premi invio per continuare... ");
@@ -149,25 +191,38 @@ public class Menu {
 
     private static void scelta3() {
         String nome = null, cognome = null, nome1, cognome1, numTel, email;
+        scanner.nextLine();
         try {
-            System.out.print("Inserisci nome> ");
-            nome = scanner.next();
-            System.out.print("Inserisci cognome> ");
-            cognome = scanner.next();
+            do {
+                System.out.print("Inserisci nome> ");
+                nome = scanner.nextLine();
+            } while (nome.equals(""));
+
+            do {
+                System.out.print("Inserisci cognome> ");
+                cognome = scanner.nextLine();
+            } while (cognome.equals(""));
         } catch (Exception e) {
             System.out.println("Errore generico! ");
         }
 
         int indiceContatto = rubrica1.cercaContatto(nome, cognome);
+        scanner.nextLine();
         try {
-            System.out.print("Inserisci nome> ");
-            nome = scanner.next();;
-            System.out.print("Inserisci cognome> ");
-            cognome = scanner.next();
+            do {
+                System.out.print("Inserisci nome> ");
+                nome = scanner.nextLine();
+            } while (nome.equals(""));
+
+            do {
+                System.out.print("Inserisci cognome> ");
+                cognome = scanner.nextLine();
+            } while (cognome.equals(""));
+
             while (true) {
                 try {
                     System.out.print("Inserisci numero> ");
-                    numTel = scanner.next();;
+                    numTel = scanner.next();
 
                     // Controllo con regex
                     /*
@@ -188,9 +243,9 @@ public class Menu {
                 }
             }
             scanner.nextLine();
-            System.out.print("Inserisci Email (premere invio se sprovvisti> ");
+            System.out.print("Inserisci Email (premere invio se sprovvisti)> ");
             email = scanner.nextLine();
-            
+
             Contatto contatto = new Contatto(nome, cognome, numTel, email);
             rubrica1.modificaContatto(indiceContatto, contatto);
             System.out.println(contatto);
@@ -207,10 +262,15 @@ public class Menu {
         String nome = null, cognome = null;
 
         try {
-            System.out.print("Inserisci nome> ");
-            nome = scanner.next();
-            System.out.print("Inserisci cognome> ");
-            cognome = scanner.next();
+            do {
+                System.out.print("Inserisci nome> ");
+                nome = scanner.nextLine();
+            } while (nome.equals(""));
+
+            do {
+                System.out.print("Inserisci cognome> ");
+                cognome = scanner.nextLine();
+            } while (cognome.equals(""));
         } catch (Exception e) {
             System.out.println("Errore generico! ");
         }

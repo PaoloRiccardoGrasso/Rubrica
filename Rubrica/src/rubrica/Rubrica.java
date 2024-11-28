@@ -14,7 +14,7 @@ import java.util.ArrayList;
 public class Rubrica {
 
     // Lista che contiene i contatti
-    private ArrayList<Contatto> rubrica = new ArrayList();
+    public ArrayList<Contatto> rubrica = new ArrayList();
 
     /**
      * Aggiunge un contatto alla rubrica.
@@ -23,6 +23,8 @@ public class Rubrica {
      * @param cognome Il cognome del contatto.
      * @param numTel Il numero di telefono del contatto.
      * @param email L'email del contatto (può essere null).
+     * 
+     * @return void
      */
     public void aggiungiContatto(Contatto contatto) {
 
@@ -56,7 +58,7 @@ public class Rubrica {
      * @param nome Il nome del contatto da cercare.
      * @param cognome Il cognome del contatto da cercare.
      */
-    //TODO Aggiustare il metodociao
+    //TODO Aggiustare il metodo
     public int cercaContatto(String nome, String cognome) {
         boolean isContattoTrovato = false;
         int indiceContatto;
@@ -82,8 +84,7 @@ public class Rubrica {
     public void modificaContatto(int indiceContatto, Contatto contatto) {
 
         if (indiceContatto != -1) {
-            rubrica.remove(indiceContatto);
-            rubrica.add(indiceContatto, contatto);
+            rubrica.set(indiceContatto, contatto);
             System.out.println("Contatto aggiornato con successo! ");
 
         } else {
