@@ -38,17 +38,13 @@
    cd rubrica
    ```
 
-2. **Compile the Source Code**:  
+2. **Run the Application**:  
    ```bash
-   javac Main.java
+   java -jar Rubrica\dist\aprifilejava.jar
    ```
 
-3. **Run the Application**:  
-   ```bash
-   java Main
-   ```
 
-4. Follow the instructions in the terminal to manage your address book!  
+3. Follow the instructions in the terminal to manage your address book!  
 
 ---
 
