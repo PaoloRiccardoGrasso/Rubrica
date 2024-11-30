@@ -150,9 +150,13 @@ public class Menu {
                 }
             }
             scanner.nextLine();
+            
+            
+            //TODO Controllo Email
             System.out.print("Inserisci Email (premere invio se sprovvisti)> ");
             email = scanner.nextLine();
 
+            
             Contatto contatto = new Contatto(nome, cognome, numTel, email);
             rubrica1.aggiungiContatto(contatto);
             System.out.println(contatto);
@@ -196,6 +200,7 @@ public class Menu {
 
     private static void scelta3() {
         String nome = null, cognome = null, nome1, cognome1, numTel, email;
+        boolean isContattoEsiste = false;
         scanner.nextLine();
         try {
             do {
@@ -218,6 +223,7 @@ public class Menu {
 
             try {
                 do {
+                do {
                     System.out.print("Inserisci nome> ");
                     nome = scanner.nextLine();
                 } while (nome.equals(""));
@@ -226,6 +232,20 @@ public class Menu {
                     System.out.print("Inserisci cognome> ");
                     cognome = scanner.nextLine();
                 } while (cognome.equals(""));
+
+                for (int i = 0; i < rubrica1.rubrica.size(); i++) {
+                    if (nome.equals(rubrica1.rubrica.get(i).nome)) {
+                        if (cognome.equals(rubrica1.rubrica.get(i).cognome)) {
+                            isContattoEsiste = true;
+                            System.out.println("Contatto già esistente! Non Modificabile!");
+                            System.out.print("Premi invio per continuare... ");
+                            scanner.nextLine();
+                        } else {
+                            isContattoEsiste = false;
+                        }
+                    }
+                }
+            } while (isContattoEsiste == true);
 
                 while (true) {
                     try {
@@ -251,9 +271,13 @@ public class Menu {
                     }
                 }
                 scanner.nextLine();
+                
+                //TODO Controllo email
                 System.out.print("Inserisci Email (premere invio se sprovvisti)> ");
                 email = scanner.nextLine();
 
+                
+                
                 Contatto contatto = new Contatto(nome, cognome, numTel, email);
                 rubrica1.modificaContatto(indiceContatto, contatto);
                 System.out.println(contatto);
