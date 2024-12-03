@@ -102,12 +102,12 @@ public class Menu {
             do {
                 do {
                     System.out.print("Inserisci nome> ");
-                    nome = scanner.nextLine();
+                    nome = scanner.nextLine().toLowerCase();
                 } while (nome.equals(""));
 
                 do {
                     System.out.print("Inserisci cognome> ");
-                    cognome = scanner.nextLine();
+                    cognome = scanner.nextLine().toLowerCase();
                 } while (cognome.equals(""));
 
                 for (int i = 0; i < rubrica1.rubrica.size(); i++) {
@@ -117,7 +117,7 @@ public class Menu {
                             System.out.println("Contatto già esistente! Non Aggiunto");
                             System.out.print("Premi invio per continuare... ");
                             scanner.nextLine();
-                            cls();
+                            menu();
                         } else {
                             isContattoEsiste = false;
                         }
@@ -150,13 +150,39 @@ public class Menu {
                 }
             }
             scanner.nextLine();
-            
-            
-            //TODO Controllo Email
-            System.out.print("Inserisci Email (premere invio se sprovvisti)> ");
-            email = scanner.nextLine();
 
-            
+            while (true) {
+                try {
+                    System.out.print("Inserisci Email (premere invio se sprovvisti)> ");
+                    email = scanner.nextLine();
+
+                    if (email.isEmpty()) { // Controlla se la stringa è vuota
+                        email = null; // Email non obbligatoria
+                        break;
+                    }
+
+                    // Controllo con regex
+                    /*
+                    - ^                 : Inizio della stringa.
+                    - [a-zA-Z0-9._%+-]+ : Uno o più caratteri ammessi nella parte locale:
+                                          lettere, numeri, punto (.), underscore (_), percentuale (%), più (+), meno (-).
+                    - @                 : Separatore obbligatorio tra parte locale e dominio.
+                    - [a-zA-Z0-9.-]+    : Uno o più caratteri ammessi nel dominio:
+                                          lettere, numeri, punto (.), trattino (-).
+                    - \.                : Punto letterale per separare il dominio dal TLD.
+                    - [a-zA-Z]{2,}      : TLD (Top Level Domain), almeno 2 caratteri alfabetici (es. .com, .org).
+                    - $                 : Fine della stringa.
+                     */
+                    if (!email.matches("^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$")) {
+                        throw new IllegalArgumentException("L'indirizzo email non è valido. Assicurati che sia nel formato corretto, ad esempio: nomeutente@dominio.com");
+                    }
+
+                    break; // Email valida, esci dal ciclo
+                } catch (IllegalArgumentException e) {
+                    System.out.println("Errore: " + e.getMessage());
+                }
+            }
+
             Contatto contatto = new Contatto(nome, cognome, numTel, email);
             rubrica1.aggiungiContatto(contatto);
             System.out.println(contatto);
@@ -172,16 +198,17 @@ public class Menu {
 
     private static void rimuoviContatto() {
         String nome = null, cognome = null;
+        scanner.nextLine();
         try {
 
             do {
                 System.out.print("Inserisci nome> ");
-                nome = scanner.nextLine();
+                nome = scanner.nextLine().toLowerCase();
             } while (nome.equals(""));
 
             do {
                 System.out.print("Inserisci cognome> ");
-                cognome = scanner.nextLine();
+                cognome = scanner.nextLine().toLowerCase();
             } while (cognome.equals(""));
 
         } catch (Exception e) {
@@ -205,51 +232,42 @@ public class Menu {
         try {
             do {
                 System.out.print("Inserisci nome> ");
-                nome = scanner.nextLine();
+                nome = scanner.nextLine().toLowerCase();
             } while (nome.equals(""));
 
             do {
                 System.out.print("Inserisci cognome> ");
-                cognome = scanner.nextLine();
+                cognome = scanner.nextLine().toLowerCase();
             } while (cognome.equals(""));
         } catch (Exception e) {
             System.out.println("Errore generico! ");
         }
-
+        
+        System.out.println("Stai per modificare il contatto: ");
         int indiceContatto = rubrica1.cercaContatto(nome, cognome);
 
         scanner.nextLine();
         if (indiceContatto != -1) {
 
             try {
-                do {
-                do {
-                    System.out.print("Inserisci nome> ");
-                    nome = scanner.nextLine();
-                } while (nome.equals(""));
+                try {
+                    do {
+                        System.out.print("Inserisci nuovo nome> ");
+                        nome = scanner.nextLine().toLowerCase();
+                    } while (nome.isEmpty()); // Usa isEmpty() per maggiore chiarezza
 
-                do {
-                    System.out.print("Inserisci cognome> ");
-                    cognome = scanner.nextLine();
-                } while (cognome.equals(""));
-
-                for (int i = 0; i < rubrica1.rubrica.size(); i++) {
-                    if (nome.equals(rubrica1.rubrica.get(i).nome)) {
-                        if (cognome.equals(rubrica1.rubrica.get(i).cognome)) {
-                            isContattoEsiste = true;
-                            System.out.println("Contatto già esistente! Non Modificabile!");
-                            System.out.print("Premi invio per continuare... ");
-                            scanner.nextLine();
-                        } else {
-                            isContattoEsiste = false;
-                        }
-                    }
+                    do {
+                        System.out.print("Inserisci nuovo cognome> ");
+                        cognome = scanner.nextLine().toLowerCase();
+                    } while (cognome.isEmpty());
+                } catch (Exception e) {
+                    System.out.println("Errore durante l'inserimento dei dati: " + e.getMessage());
+                    return; // Esci dalla funzione se c'è un errore
                 }
-            } while (isContattoEsiste == true);
 
                 while (true) {
                     try {
-                        System.out.print("Inserisci numero> ");
+                        System.out.print("Inserisci nuovo numero> ");
                         numTel = scanner.next();
 
                         // Controllo con regex
@@ -270,14 +288,41 @@ public class Menu {
                         System.out.println("Errore: " + e.getMessage());
                     }
                 }
-                scanner.nextLine();
-                
-                //TODO Controllo email
-                System.out.print("Inserisci Email (premere invio se sprovvisti)> ");
-                email = scanner.nextLine();
 
-                
-                
+                scanner.nextLine();
+
+                while (true) {
+                    try {
+                        System.out.print("Inserisci Email (premere invio se sprovvisti)> ");
+                        email = scanner.nextLine();
+
+                        if (email.isEmpty()) { // Controlla se la stringa è vuota
+                            email = null; // Email non obbligatoria
+                            break;
+                        }
+
+                        // Controllo con regex
+                        /*
+                    - ^                 : Inizio della stringa.
+                    - [a-zA-Z0-9._%+-]+ : Uno o più caratteri ammessi nella parte locale:
+                                          lettere, numeri, punto (.), underscore (_), percentuale (%), più (+), meno (-).
+                    - @                 : Separatore obbligatorio tra parte locale e dominio.
+                    - [a-zA-Z0-9.-]+    : Uno o più caratteri ammessi nel dominio:
+                                          lettere, numeri, punto (.), trattino (-).
+                    - \.                : Punto letterale per separare il dominio dal TLD.
+                    - [a-zA-Z]{2,}      : TLD (Top Level Domain), almeno 2 caratteri alfabetici (es. .com, .org).
+                    - $                 : Fine della stringa.
+                         */
+                        if (!email.matches("^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$")) {
+                            throw new IllegalArgumentException("L'indirizzo email non è valido. Assicurati che sia nel formato corretto, ad esempio: nomeutente@dominio.com");
+                        }
+
+                        break; // Email valida, esci dal ciclo
+                    } catch (IllegalArgumentException e) {
+                        System.out.println("Errore: " + e.getMessage());
+                    }
+                }
+
                 Contatto contatto = new Contatto(nome, cognome, numTel, email);
                 rubrica1.modificaContatto(indiceContatto, contatto);
                 System.out.println(contatto);
@@ -302,12 +347,12 @@ public class Menu {
         try {
             do {
                 System.out.print("Inserisci nome> ");
-                nome = scanner.nextLine();
+                nome = scanner.nextLine().toLowerCase();
             } while (nome.equals(""));
 
             do {
                 System.out.print("Inserisci cognome> ");
-                cognome = scanner.nextLine();
+                cognome = scanner.nextLine().toLowerCase();
             } while (cognome.equals(""));
         } catch (Exception e) {
             System.out.println("Errore generico! ");

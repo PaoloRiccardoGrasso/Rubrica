@@ -33,12 +33,27 @@ public class Contatto {
         String s = "";
         s += "\n";
         s += "--------------- Contatto ---------------\n";
-        s += "Nome: " + nome + "\n";
-        s += "Cognome: " + cognome + "\n";
+        s += "Nome: " + capitalizeWords(nome) + "\n";
+        s += "Cognome: " + capitalizeWords(cognome) + "\n";
         s += "Numero di Telefono: " + numeroTelefono + "\n";
         s += "E-Mail: " + (email != null ? email : "N/D") + "\n";
         s += "----------------------------------------";
         return s;
+    }
+
+    // Metodo per capitalizzare ogni parola in una stringa
+    private String capitalizeWords(String input) {
+        if (input == null || input.isEmpty()) {
+            return input;
+        }
+        String[] words = input.split(" ");
+        StringBuilder result = new StringBuilder();
+        for (String word : words) {
+            result.append(word.substring(0, 1).toUpperCase())
+                    .append(word.substring(1).toLowerCase())
+                    .append(" ");
+        }
+        return result.toString().trim(); // Rimuove l'ultimo spazio
     }
 
     @Override
