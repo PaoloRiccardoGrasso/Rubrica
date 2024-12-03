@@ -52,16 +52,16 @@ public class Menu {
     private static void gestisciScelta(int scelta) {
         switch (scelta) {
             case 1:
-                scelta1();
+                aggiungiContatto();
                 break;
             case 2:
-                scelta2();
+                rimuoviContatto();
                 break;
             case 3:
-                scelta3();
+                modificaContatto();
                 break;
             case 4:
-                scelta4();
+                ricercaContatto();
                 break;
             case 5:
                 scanner.nextLine();
@@ -80,7 +80,7 @@ public class Menu {
         }
     }
 
-    private static void scelta1() {
+    private static void aggiungiContatto() {
         String nome, cognome, numTel, email;
         boolean isContattoEsiste = false;
         scanner.nextLine();
@@ -170,7 +170,7 @@ public class Menu {
 
     }
 
-    private static void scelta2() {
+    private static void rimuoviContatto() {
         String nome = null, cognome = null;
         try {
 
@@ -198,7 +198,7 @@ public class Menu {
 
     }
 
-    private static void scelta3() {
+    private static void modificaContatto() {
         String nome = null, cognome = null, nome1, cognome1, numTel, email;
         boolean isContattoEsiste = false;
         scanner.nextLine();
@@ -295,7 +295,7 @@ public class Menu {
         }
     }
 
-    private static void scelta4() {
+    private static void ricercaContatto() {
         String nome = null, cognome = null;
 
         scanner.nextLine();
