@@ -16,15 +16,11 @@ public class Rubrica {
     // Lista che contiene i contatti
     public ArrayList<Contatto> rubrica = new ArrayList();
 
+
     /**
      * Aggiunge un contatto alla rubrica.
-     *
-     * @param nome Il nome del contatto.
-     * @param cognome Il cognome del contatto.
-     * @param numTel Il numero di telefono del contatto.
-     * @param email L'email del contatto (può essere null).
      * 
-     * @return void
+     * @param contatto
      */
     public void aggiungiContatto(Contatto contatto) {
 
@@ -37,10 +33,11 @@ public class Rubrica {
         }
     }
 
+    
     /**
      * Rimuove un contatto dalla rubrica.
-     *
-     * @param contatto Il contatto da rimuovere.
+     * 
+     * @param indiceContatto 
      */
     public void rimuoviContatto(int indiceContatto) {
 
@@ -52,13 +49,14 @@ public class Rubrica {
         }
     }
 
+
     /**
-     * Cerca un contatto per cognome.
-     *
-     * @param nome Il nome del contatto da cercare.
-     * @param cognome Il cognome del contatto da cercare.
+     * Cerca il contatto e lo visualizza
+     * 
+     * @param nome
+     * @param cognome
+     * @return int - Index del contatto 
      */
-    //TODO Aggiustare il metodo
     public int cercaContatto(String nome, String cognome) {
         boolean isContattoTrovato = false;
         int indiceContatto;

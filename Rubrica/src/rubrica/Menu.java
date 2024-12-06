@@ -80,6 +80,7 @@ public class Menu {
         }
     }
 
+    
     private static void aggiungiContatto() {
         String nome, cognome, numTel, email;
         boolean isContattoEsiste = false;
