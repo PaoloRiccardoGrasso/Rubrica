@@ -57,7 +57,7 @@ public class Contatto {
 
     /**
      * Metodo setter per scrivere il contenuto nell'attributo nome
-     * 
+     *
      * @param nome Nome da inserire
      *
      */
@@ -65,13 +65,18 @@ public class Contatto {
         this.nome = nome;
     }
 
+    /**
+     * Metodo getter per leggere il contenuto dell'attributo cognome
+     *
+     * @return String Cognome della persona
+     */
     public String getCognome() {
         return cognome;
     }
 
     /**
      * Metodo setter per scrivere il contenuto nell'attributo cognome
-     * 
+     *
      * @param cognome Cognome da inserire
      *
      */
@@ -79,13 +84,18 @@ public class Contatto {
         this.cognome = cognome;
     }
 
+    /**
+     * Metodo getter per leggere il contenuto dell'attributo numeroTelefono
+     *
+     * @return String Numero di telefono della persona
+     */
     public String getNumeroTelefono() {
         return numeroTelefono;
     }
 
     /**
      * Metodo setter per scrivere il contenuto nell'attributo numeroTelefono
-     * 
+     *
      * @param numeroTelefono Numero di telefono da inserire
      *
      */
@@ -93,14 +103,32 @@ public class Contatto {
         this.numeroTelefono = numeroTelefono;
     }
 
+    /**
+     * Metodo getter per leggere il contenuto dell'attributo Email
+     *
+     * @return String Email della persona
+     */
     public String getEmail() {
         return email;
     }
 
+    /**
+     * Metodo setter per scrivere il contenuto nell'attributo email
+     *
+     * @param email Email da inserire
+     *
+     */
     public void setEmail(String email) {
         this.email = email;
     }
 
+    /**
+     *
+     * HashCode utile per il metodo equals
+     * 
+     * @return int Hash
+     *
+     */
     @Override
     public int hashCode() {
         int hash = 7;
@@ -137,6 +165,13 @@ public class Contatto {
         return Objects.equals(this.cognome, other.cognome);
     }
 
+    
+    /**
+     * Metodo utile per visualizzare i dati di un singolo contatto.
+     * 
+     * 
+     * @return String Stringa del contatto da visualizzare.
+     */
     @Override
     public String toString() {
         String s = "";
