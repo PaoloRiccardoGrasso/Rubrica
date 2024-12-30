@@ -1,6 +1,7 @@
 package io.github.PaoloRiccardoGrasso;
 
 import io.github.PaoloRiccardoGrasso.Model.*;
+import io.github.PaoloRiccardoGrasso.View.Menu;
 
 
 public class App {
@@ -11,7 +12,10 @@ public class App {
     }
     
     public void Run(){
+        Menu menu = new Menu();
         
+        
+        menu.apriMenu();
         
     }
 }

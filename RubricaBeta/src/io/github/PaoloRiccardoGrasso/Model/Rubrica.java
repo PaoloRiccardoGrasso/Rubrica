@@ -18,6 +18,7 @@ import io.github.PaoloRiccardoGrasso.Model.Contatto;
  * <li>Ricerca contatto nella rubrica</li>
  * </ul>
  *
+ * 
  *
  * @author Paolo Riccardo Grasso, Alessandro Di Nella, Giuseppe Salomita, Mario
  * Favoino, Matteo Lucia
@@ -124,7 +125,7 @@ public class Rubrica {
     /**
      * Modifica i dati del contatto passandogli il nuovo contatto 
      *
-     * @param Contatto Nuovo contatto con cui fare i cambiamenti del vecchio
+     * @param contatto Nuovo contatto con cui fare i cambiamenti del vecchio
      * 
      * 
      * @author Paolo Riccardo Grasso, Alessandro Di Nella, Giuseppe Salomita,
