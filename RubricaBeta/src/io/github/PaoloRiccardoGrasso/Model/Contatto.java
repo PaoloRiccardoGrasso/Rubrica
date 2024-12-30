@@ -34,6 +34,11 @@ public class Contatto {
      * @param numeroTelefono Numero di telefono della persona da inserire
      * @param email (Opzionale) Email della persona da inserire
      *
+     * @author Paolo Riccardo Grasso, Alessandro Di Nella, Giuseppe Salomita,
+     * Mario Favoino, Matteo Lucia
+     * @version Beta (2.0)
+     * @since Alpha (1.0)
+     *
      */
     public Contatto(String nome, String cognome, String numeroTelefono, String email) {
         this.nome = nome;
@@ -48,8 +53,13 @@ public class Contatto {
 
     /**
      * Metodo getter per leggere il contenuto dell'attributo nome
+     * 
+     * @author Paolo Riccardo Grasso, Alessandro Di Nella, Giuseppe Salomita,
+     * Mario Favoino, Matteo Lucia
+     * @version Beta (2.0)
      *
      * @return String Nome della persona
+     * 
      */
     public String getNome() {
         return nome;
@@ -58,6 +68,9 @@ public class Contatto {
     /**
      * Metodo setter per scrivere il contenuto nell'attributo nome
      *
+     * @author Paolo Riccardo Grasso, Alessandro Di Nella, Giuseppe Salomita,
+     * Mario Favoino, Matteo Lucia
+     * @version Beta (2.0)
      * @param nome Nome da inserire
      *
      */
@@ -67,6 +80,10 @@ public class Contatto {
 
     /**
      * Metodo getter per leggere il contenuto dell'attributo cognome
+     * 
+     * @author Paolo Riccardo Grasso, Alessandro Di Nella, Giuseppe Salomita,
+     * Mario Favoino, Matteo Lucia
+     * @version Beta (2.0)
      *
      * @return String Cognome della persona
      */
@@ -76,6 +93,10 @@ public class Contatto {
 
     /**
      * Metodo setter per scrivere il contenuto nell'attributo cognome
+     * 
+     * @author Paolo Riccardo Grasso, Alessandro Di Nella, Giuseppe Salomita,
+     * Mario Favoino, Matteo Lucia
+     * @version Beta (2.0)
      *
      * @param cognome Cognome da inserire
      *
@@ -86,6 +107,10 @@ public class Contatto {
 
     /**
      * Metodo getter per leggere il contenuto dell'attributo numeroTelefono
+     * 
+     * @author Paolo Riccardo Grasso, Alessandro Di Nella, Giuseppe Salomita,
+     * Mario Favoino, Matteo Lucia
+     * @version Beta (2.0)
      *
      * @return String Numero di telefono della persona
      */
@@ -95,6 +120,10 @@ public class Contatto {
 
     /**
      * Metodo setter per scrivere il contenuto nell'attributo numeroTelefono
+     * 
+     * @author Paolo Riccardo Grasso, Alessandro Di Nella, Giuseppe Salomita,
+     * Mario Favoino, Matteo Lucia
+     * @version Beta (2.0)
      *
      * @param numeroTelefono Numero di telefono da inserire
      *
@@ -105,6 +134,10 @@ public class Contatto {
 
     /**
      * Metodo getter per leggere il contenuto dell'attributo Email
+     * 
+     * @author Paolo Riccardo Grasso, Alessandro Di Nella, Giuseppe Salomita,
+     * Mario Favoino, Matteo Lucia
+     * @version Beta (2.0)
      *
      * @return String Email della persona
      */
@@ -114,6 +147,10 @@ public class Contatto {
 
     /**
      * Metodo setter per scrivere il contenuto nell'attributo email
+     * 
+     * @author Paolo Riccardo Grasso, Alessandro Di Nella, Giuseppe Salomita,
+     * Mario Favoino, Matteo Lucia
+     * @version Beta (2.0)
      *
      * @param email Email da inserire
      *
@@ -126,6 +163,11 @@ public class Contatto {
      *
      * HashCode utile per il metodo equals
      * 
+     * @author Paolo Riccardo Grasso, Alessandro Di Nella, Giuseppe Salomita,
+     * Mario Favoino, Matteo Lucia
+     * @version Beta (2.0)
+     * @since Alpha (1.0)
+     *
      * @return int Hash
      *
      */
@@ -145,6 +187,12 @@ public class Contatto {
      *
      * @param obj l'oggetto con cui confrontare questo oggetto. Deve essere
      * della stessa classe, altrimenti il metodo restituirà `false`.
+     * 
+     * @author Paolo Riccardo Grasso, Alessandro Di Nella, Giuseppe Salomita,
+     * Mario Favoino, Matteo Lucia
+     * @version Beta (2.0)
+     * @since Alpha (1.0)
+     * 
      * @return `true` se gli oggetti sono uguali, `false` altrimenti.
      */
     @Override
@@ -165,11 +213,15 @@ public class Contatto {
         return Objects.equals(this.cognome, other.cognome);
     }
 
-    
     /**
      * Metodo utile per visualizzare i dati di un singolo contatto.
      * 
-     * 
+     * @author Paolo Riccardo Grasso, Alessandro Di Nella, Giuseppe Salomita,
+     * Mario Favoino, Matteo Lucia
+     * @version Beta (2.0)
+     * @since Alpha (1.0)
+     *
+     *
      * @return String Stringa del contatto da visualizzare.
      */
     @Override
