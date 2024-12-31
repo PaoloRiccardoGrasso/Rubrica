@@ -21,9 +21,6 @@ import java.util.Scanner;
  * @since Alpha (1.0)
  */
 public class Menu {
-
-    Scanner scanner = new Scanner(System.in);
-
     private GestoreRubrica gestoreRubrica;
 
     public Menu() {
@@ -41,21 +38,11 @@ public class Menu {
      * @since Alpha (1.0)
      */
     public void apriMenu() {
-        int scelta;
-
         do {
-            cls();
-            interfaccia();
-            System.out.print("Scelta> ");
-            try {
-                scelta = scanner.nextInt();
-                gestoreRubrica.gestisciScelta(scelta);
-            } catch (NumberFormatException e) {
-                System.out.println("Errore: inserire un numero intero valido.");
-                scelta = -1;
-            }
-        } while (scelta != 7);
-
+            cls();        // Pulisce la console
+            interfaccia(); // Mostra l'interfaccia del menu
+            gestoreRubrica.gestisciScelta(); // Tutta la logica è nel Controller
+        } while (true); // L'uscita dal ciclo è gestita dal Controller
     }
 
     /**
@@ -85,18 +72,15 @@ public class Menu {
     }
 
     
-    /**
-     * TODO DA FARE COMMENTO
-     */
-    public void pausa() {
-        System.out.println("Premere invio per continuare...");
-        scanner.nextLine();
-        scanner.nextLine();
-    }
 
-    
+
     /**
-     * TODO DA FARE COMMENTO
+     * Metodo per visualizzare l'interfaccia del menù a riga di comando
+     *
+     * @author Paolo Riccardo Grasso, Alessandro Di Nella, Giuseppe Salomita,
+     * Mario Favoino, Matteo Lucia
+     * @version Beta (2.0)
+     * @since Alpha (1.0)
      */
     private void interfaccia() {
         if (gestoreRubrica.isActiveAutomaticSave == false) {
@@ -126,9 +110,14 @@ public class Menu {
         }
     }
 
-    
     /**
-     * TODO DA FARE COMMENTO
+     * Metodo utile al controller per inviare messaggi attraverso il view
+     *
+     * @param messaggio Messaggio da inviare attraverso la view
+     * 
+     * @author Paolo Riccardo Grasso, Alessandro Di Nella, Giuseppe Salomita,
+     * Mario Favoino, Matteo Lucia
+     * @version Beta (2.0)
      */
     public void inviaMessaggio(String messaggio) {
         System.out.println(messaggio);

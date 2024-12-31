@@ -2,6 +2,7 @@ package io.github.PaoloRiccardoGrasso.Controller;
 
 import io.github.PaoloRiccardoGrasso.Model.Rubrica;
 import io.github.PaoloRiccardoGrasso.View.Menu;
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 /**
@@ -41,47 +42,79 @@ public class GestoreRubrica {
     /**
      * TODO DA FARE COMMENTO
      */
-    public void gestisciScelta(int scelta) {
-        switch (scelta) {
-            case 1:
-                menu.inviaMessaggio("Hai scelto 1");
-                menu.pausa();
-                break;
-            case 2:
-                menu.inviaMessaggio("Hai scelto 2");
-                menu.pausa();
-                break;
-            case 3:
-                menu.inviaMessaggio("Hai scelto 3");
-                menu.pausa();
-                break;
-            case 4:
-                menu.inviaMessaggio("Hai scelto 4");
-                menu.pausa();
-                break;
-            case 5:
-                menu.inviaMessaggio("Hai scelto 5");
-                menu.pausa();
-                break;
-            case 6:
-                activeordisableautomaticSave();
-                break;
-            case 7:
-                menu.inviaMessaggio("Uscita dal programma.");
-                menu.pausa();
-                break;
-            default:
-                menu.inviaMessaggio("Scelta non valida. Riprova.");
-                menu.pausa();
-                break;
+    public void gestisciScelta() {
+        int scelta;
+        try {
+            System.out.print("Scelta> ");
+            scelta = scanner.nextInt(); // Acquisisce l'input
+
+            switch (scelta) {
+                case 1:
+                    aggiungiContatto();
+                    pausa();
+                    break;
+                case 2:
+                    menu.inviaMessaggio("Hai scelto 2");
+                    pausa();
+                    break;
+                case 3:
+                    menu.inviaMessaggio("Hai scelto 3");
+                    pausa();
+                    break;
+                case 4:
+                    menu.inviaMessaggio("Hai scelto 4");
+                    pausa();
+                    break;
+                case 5:
+                    menu.inviaMessaggio("Hai scelto 5");
+                    pausa();
+                    break;
+                case 6:
+                    ActiveOrDisableAutomaticSave();
+                    break;
+                case 7:
+                    menu.inviaMessaggio("Uscita dal programma.");
+                    pausa();
+                    System.exit(0); // Esci dal programma
+                    break;
+                default:
+                    menu.inviaMessaggio("Scelta non valida. Riprova.");
+                    pausa();
+                    break;
+            }
+        } catch (InputMismatchException e) {
+            menu.inviaMessaggio("Errore: inserire un numero intero valido.");
+            scanner.nextLine(); // Pulisce il buffer in caso di errore
         }
     }
 
-    
     /**
-     * TODO DA FARE COMMENTO
+     * Metodo per mettere in pausa la visualizzazione dei dati
+     *
+     * @author Paolo Riccardo Grasso, Alessandro Di Nella, Giuseppe Salomita,
+     * Mario Favoino, Matteo Lucia
+     * @version Beta (2.0)
      */
-    private void activeordisableautomaticSave() {
+    public void pausa() {
+        menu.inviaMessaggio("Premere invio per continuare...");
+        scanner.nextLine();
+        scanner.nextLine();
+    }
+
+    /**
+     * Metodo per attivare il salvataggio automatico dei file.
+     * 
+     * Se il parametro isAsctiveAutomaticSave è:
+     * <ul>
+     * <li> Attivo (True): Rende disponibile all'utente l'opzione per disattivare il salvataggio</li>
+     * <li> Disattivo (False): Rende disponibile all'utente l'opzione per attivare il salvataggio</li>
+     * </ul>
+     * 
+     * @author Paolo Riccardo Grasso, Alessandro Di Nella, Giuseppe Salomita,
+     * Mario Favoino, Matteo Lucia
+     * @version Beta (2.0)
+     */
+    private void ActiveOrDisableAutomaticSave() {
         if (isActiveAutomaticSave == false) {
             menu.inviaMessaggio("Attivare salvataggio automatico? (S o N): ");
             String carattere;
@@ -92,11 +125,11 @@ public class GestoreRubrica {
                 if (carattere.equals("S")) {
                     isActiveAutomaticSave = true;
                     menu.inviaMessaggio("Salvataggio automatico attivato con successo!");
-                    menu.pausa();
+                    pausa();
                     break; // Esce dal loop
                 } else if (carattere.equals("N")) {
                     menu.inviaMessaggio("Il Salvataggio automatico non è stato attivato!");
-                    menu.pausa();
+                    pausa();
                     break; // Esce dal loop
                 } else {
                     menu.inviaMessaggio("Input non valido. Inserire 'S' per Sì o 'N' per No: ");
@@ -110,11 +143,11 @@ public class GestoreRubrica {
                 if (carattere.equals("S")) {
                     isActiveAutomaticSave = false;
                     menu.inviaMessaggio("Salvataggio automatico disattivato con successo!");
-                    menu.pausa();
+                    pausa();
                     break; // Esce dal loop
                 } else if (carattere.equals("N")) {
                     menu.inviaMessaggio("Il Salvataggio automatico non è stato disattivato!");
-                    menu.pausa();
+                    pausa();
                     break; // Esce dal loop
                 } else {
                     menu.inviaMessaggio("Input non valido. Inserire 'S' per Sì o 'N' per No: ");
@@ -122,4 +155,13 @@ public class GestoreRubrica {
             } while (true);
         }
     }
+    
+    //-----------------------------METODI CRUD-----------------------------
+    private void aggiungiContatto(){
+        
+    }
+    
+    
+    
+    
 }

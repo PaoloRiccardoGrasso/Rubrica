@@ -86,20 +86,6 @@ public class Menu {
         boolean isContattoEsiste = false;
         scanner.nextLine();
         try {
-
-            /*
-            
-            do {
-                    System.out.print("Inserisci nome> ");
-                    nome = scanner.nextLine();
-                } while (nome.equals(""));
-
-                do {
-                    System.out.print("Inserisci cognome> ");
-                    cognome = scanner.nextLine();
-                } while (cognome.equals(""));
-             */
-            //-------------------------------------------------
             do {
                 do {
                     System.out.print("Inserisci nome> ");
