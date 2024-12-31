@@ -120,7 +120,7 @@ public class Menu {
      * @version Beta (2.0)
      */
     public void inviaMessaggio(String messaggio) {
-        System.out.println(messaggio);
+        System.out.print(messaggio);
     }
 
 }

@@ -1,5 +1,6 @@
 package io.github.PaoloRiccardoGrasso.Controller;
 
+import io.github.PaoloRiccardoGrasso.Model.Contatto;
 import io.github.PaoloRiccardoGrasso.Model.Rubrica;
 import io.github.PaoloRiccardoGrasso.View.Menu;
 import java.util.InputMismatchException;
@@ -54,11 +55,10 @@ public class GestoreRubrica {
                     pausa();
                     break;
                 case 2:
-                    menu.inviaMessaggio("Hai scelto 2");
-                    pausa();
+                    rimuoviContatto();
                     break;
                 case 3:
-                    menu.inviaMessaggio("Hai scelto 3");
+                    modificaContatto();
                     pausa();
                     break;
                 case 4:
@@ -66,7 +66,8 @@ public class GestoreRubrica {
                     pausa();
                     break;
                 case 5:
-                    menu.inviaMessaggio("Hai scelto 5");
+                    menu.inviaMessaggio(rubrica.toString());
+                    scanner.nextLine();
                     pausa();
                     break;
                 case 6:
@@ -96,20 +97,21 @@ public class GestoreRubrica {
      * @version Beta (2.0)
      */
     public void pausa() {
-        menu.inviaMessaggio("Premere invio per continuare...");
-        scanner.nextLine();
+        menu.inviaMessaggio("\nPremere invio per continuare...");
         scanner.nextLine();
     }
 
     /**
      * Metodo per attivare il salvataggio automatico dei file.
-     * 
+     *
      * Se il parametro isAsctiveAutomaticSave è:
      * <ul>
-     * <li> Attivo (True): Rende disponibile all'utente l'opzione per disattivare il salvataggio</li>
-     * <li> Disattivo (False): Rende disponibile all'utente l'opzione per attivare il salvataggio</li>
+     * <li> Attivo (True): Rende disponibile all'utente l'opzione per
+     * disattivare il salvataggio</li>
+     * <li> Disattivo (False): Rende disponibile all'utente l'opzione per
+     * attivare il salvataggio</li>
      * </ul>
-     * 
+     *
      * @author Paolo Riccardo Grasso, Alessandro Di Nella, Giuseppe Salomita,
      * Mario Favoino, Matteo Lucia
      * @version Beta (2.0)
@@ -155,13 +157,219 @@ public class GestoreRubrica {
             } while (true);
         }
     }
-    
+
     //-----------------------------METODI CRUD-----------------------------
-    private void aggiungiContatto(){
-        
+    private void aggiungiContatto() {
+        String nome, cognome, numeroDiTelefono, email;
+
+        scanner.nextLine();
+
+        do {
+            menu.inviaMessaggio("Inserire nome>");
+            nome = scanner.nextLine();
+        } while (nome.equals(""));
+
+        do {
+            menu.inviaMessaggio("Inserire cognome>");
+            cognome = scanner.nextLine();
+        } while (nome.equals(""));
+
+        if (rubrica.cercaContatto(nome, cognome) == -1) {
+            while (true) {
+                try {
+                    menu.inviaMessaggio("Inserisci numero> ");
+                    numeroDiTelefono = scanner.next();
+
+                    // Controllo con regex
+                    /*
+                    ^: inizio della stringa.
+                    +?: il simbolo + è facoltativo.
+                        d{9,}:
+                            \\d indica una cifra.
+                            {9,} indica che devono esserci almeno 9 cifre (non c'è limite superiore).
+                    $: fine della stringa.*/
+                    if (!numeroDiTelefono.matches("^\\+?\\d{9,}$")) {
+                        throw new IllegalArgumentException("Il numero deve contenere solo cifre (min. 9) , opzionalmente, un '+' all'inizio.\n");
+                    }
+
+                    break;
+
+                } catch (IllegalArgumentException e) {
+                    menu.inviaMessaggio("Errore: " + e.getMessage());
+                }
+            }
+
+            scanner.nextLine();
+
+            while (true) {
+                try {
+                    System.out.print("Inserisci Email (premere invio se sprovvisti)> ");
+                    email = scanner.nextLine();
+
+                    if (email.isEmpty()) {
+                        email = "";
+                        break;
+                    }
+
+                    // Controllo con regex
+                    /*
+                    - ^                 : Inizio della stringa.
+                    - [a-zA-Z0-9._%+-]+ : Uno o più caratteri ammessi nella parte locale:
+                                          lettere, numeri, punto (.), underscore (_), percentuale (%), più (+), meno (-).
+                    - @                 : Separatore obbligatorio tra parte locale e dominio.
+                    - [a-zA-Z0-9.-]+    : Uno o più caratteri ammessi nel dominio:
+                                          lettere, numeri, punto (.), trattino (-).
+                    - \.                : Punto letterale per separare il dominio dal TLD.
+                    - [a-zA-Z]{2,}      : TLD (Top Level Domain), almeno 2 caratteri alfabetici (es. .com, .org).
+                    - $                 : Fine della stringa.
+                     */
+                    if (!email.matches("^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$")) {
+                        throw new IllegalArgumentException("L'indirizzo email non è valido. Assicurati che sia nel formato corretto, ad esempio: nomeutente@dominio.com\n");
+                    }
+
+                    break; // Email valida, esci dal ciclo
+                } catch (IllegalArgumentException e) {
+                    menu.inviaMessaggio("Errore: " + e.getMessage());
+                }
+            }
+            Contatto contatto = new Contatto(nome, cognome, numeroDiTelefono, email);
+
+            if (rubrica.aggiungiContatto(contatto)) {
+                menu.inviaMessaggio("Contatto aggiunto con successo!\n");
+            } else {
+                menu.inviaMessaggio("Errore nell'inserimento del contatto nella rubrica\n");
+            }
+
+        } else {
+            menu.inviaMessaggio("Contatto già esistente! Non Aggiunto\n");
+            pausa();
+            menu.apriMenu();
+        }
+
     }
-    
-    
-    
-    
+
+    private void rimuoviContatto() {
+        String nome, cognome;
+
+        scanner.nextLine();
+
+        do {
+            menu.inviaMessaggio("Inserire nome>");
+            nome = scanner.nextLine();
+        } while (nome.equals(""));
+
+        do {
+            menu.inviaMessaggio("Inserire cognome>");
+            cognome = scanner.nextLine();
+        } while (nome.equals(""));
+
+        int indice = rubrica.cercaContatto(nome, cognome);
+        if (indice != -1) {
+            menu.inviaMessaggio("Stai per rimuovere il seguente contatto: ");
+            menu.inviaMessaggio(rubrica.rubrica.get(indice).toString());
+            pausa();
+            if (rubrica.rimuoviContatto(indice)) {
+                menu.inviaMessaggio("Contatto rimosso con successo!");
+                pausa();
+            } else {
+                menu.inviaMessaggio("Errore nella rimozione del contatto!");
+                pausa();
+            }
+        }
+
+    }
+
+    private void modificaContatto() {
+        String nome, cognome, email = null, numeroDiTelefono = null;
+
+        scanner.nextLine();
+
+        do {
+            menu.inviaMessaggio("Inserire nome>");
+            nome = scanner.nextLine();
+        } while (nome.equals(""));
+
+        do {
+            menu.inviaMessaggio("Inserire cognome>");
+            cognome = scanner.nextLine();
+        } while (nome.equals(""));
+
+        int indice = rubrica.cercaContatto(nome, cognome);
+        menu.inviaMessaggio("Stai per modificare questo contatto:\n");
+        menu.inviaMessaggio(rubrica.rubrica.get(indice).toString());
+        do {
+            menu.inviaMessaggio("\nInserire nome>");
+            nome = scanner.nextLine();
+        } while (nome.equals(""));
+
+        do {
+            menu.inviaMessaggio("Inserire cognome>");
+            cognome = scanner.nextLine();
+        } while (nome.equals(""));
+        
+        while (true) {
+            try {
+                menu.inviaMessaggio("Inserisci numero> ");
+                numeroDiTelefono = scanner.next();
+
+                // Controllo con regex
+                /*
+                    ^: inizio della stringa.
+                    +?: il simbolo + è facoltativo.
+                        d{9,}:
+                            \\d indica una cifra.
+                            {9,} indica che devono esserci almeno 9 cifre (non c'è limite superiore).
+                    $: fine della stringa.*/
+                if (!numeroDiTelefono.matches("^\\+?\\d{9,}$")) {
+                    throw new IllegalArgumentException("Il numero deve contenere solo cifre (min. 9) , opzionalmente, un '+' all'inizio.\n");
+                }
+
+                break;
+
+            } catch (IllegalArgumentException e) {
+                menu.inviaMessaggio("Errore: " + e.getMessage());
+            }
+        }
+
+        scanner.nextLine();
+
+        while (true) {
+            try {
+                System.out.print("Inserisci Email (premere invio se sprovvisti)> ");
+                email = scanner.nextLine();
+
+                if (email.isEmpty()) {
+                    email = "";
+                    break;
+                }
+
+                // Controllo con regex
+                /*
+                    - ^                 : Inizio della stringa.
+                    - [a-zA-Z0-9._%+-]+ : Uno o più caratteri ammessi nella parte locale:
+                                          lettere, numeri, punto (.), underscore (_), percentuale (%), più (+), meno (-).
+                    - @                 : Separatore obbligatorio tra parte locale e dominio.
+                    - [a-zA-Z0-9.-]+    : Uno o più caratteri ammessi nel dominio:
+                                          lettere, numeri, punto (.), trattino (-).
+                    - \.                : Punto letterale per separare il dominio dal TLD.
+                    - [a-zA-Z]{2,}      : TLD (Top Level Domain), almeno 2 caratteri alfabetici (es. .com, .org).
+                    - $                 : Fine della stringa.
+                 */
+                if (!email.matches("^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$")) {
+                    throw new IllegalArgumentException("L'indirizzo email non è valido. Assicurati che sia nel formato corretto, ad esempio: nomeutente@dominio.com\n");
+                }
+
+                break; // Email valida, esci dal ciclo
+            } catch (IllegalArgumentException e) {
+                menu.inviaMessaggio("Errore: " + e.getMessage());
+            }
+        }
+
+        Contatto contatto = new Contatto(nome, cognome, numeroDiTelefono, email);
+        if (rubrica.modificaContatto(contatto, indice)) {
+            menu.inviaMessaggio("Contatto modificato con successo!");
+        } else {
+            menu.inviaMessaggio("Errore nella modifica del contatto!");
+        }
+    }
 }

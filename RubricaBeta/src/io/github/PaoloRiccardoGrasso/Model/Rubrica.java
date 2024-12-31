@@ -140,9 +140,7 @@ public class Rubrica {
      * </ul>
      * 
      */
-    public boolean modificaContatto(Contatto contatto) {
-
-        int indiceContatto = cercaContatto(contatto.getNome(), contatto.getCognome());
+    public boolean modificaContatto(Contatto contatto, int indiceContatto) {
         
         if (indiceContatto != -1) {
             rubrica.set(indiceContatto, contatto);
@@ -152,7 +150,30 @@ public class Rubrica {
             return false;
         }
     }
+    
+    
+    @Override
+    public String toString() {
+        String s = "";
+        if(rubrica.isEmpty()){
+            return "La Rubrica è vuota!";
+        } else {
+            for(int i=0; i<rubrica.size(); i++){
+                s+= rubrica.get(i).toString() + "\n";
+            }
+        }
+        
+        return s;
+    }
+    
+    //----------------------------------------------SALVATAGGIO SU FILE----------------------------------------------
+
+    
+    
+    
 }
 
-//----------------------------------------------SALVATAGGIO SU FILE----------------------------------------------
+
+
+
 
