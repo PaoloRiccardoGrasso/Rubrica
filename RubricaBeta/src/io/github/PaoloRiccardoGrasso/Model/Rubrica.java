@@ -156,7 +156,7 @@ public class Rubrica {
     public String toString() {
         String s = "";
         if(rubrica.isEmpty()){
-            return "La Rubrica è vuota!";
+            return "-1";
         } else {
             for(int i=0; i<rubrica.size(); i++){
                 s+= rubrica.get(i).toString() + "\n";

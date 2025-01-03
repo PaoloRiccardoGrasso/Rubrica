@@ -228,12 +228,12 @@ public class Contatto {
     public String toString() {
         String s = "";
         s += "\n";
-        s += "--------------- Contatto ---------------\n";
+        s += "--------------- Contatto --------------\n";
         s += "Nome: " + nome + "\n";
         s += "Cognome: " + cognome + "\n";
         s += "Numero di Telefono: " + numeroTelefono + "\n";
         s += "E-Mail: " + (email != null ? email : "N/D") + "\n";
-        s += "----------------------------------------";
+        s += "---------------------------------------";
         return s;
     }
 
