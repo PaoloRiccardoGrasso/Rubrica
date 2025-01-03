@@ -3,21 +3,19 @@ package io.github.PaoloRiccardoGrasso.Model;
 import java.util.Objects;
 
 /**
- * La classe Contatto rappresenta un singolo contatto nella rubrica telefonica.
- * Contiene informazioni personali come nome, cognome, numero di telefono ed
- * email. Offre metodi per accedere e modificare i dati, oltre a confrontare due
- * contatti.
- *
- *
+ * Rappresenta un contatto all'interno di una rubrica telefonica.
+ * <p>
+ * La classe fornisce informazioni personali come nome, cognome, numero di telefono ed email, 
+ * ed include metodi per accedere, modificare e confrontare i contatti.
+ * </p>
+ * 
  * Funzionalità principali:
  * <ul>
- * <li>Creazione di un contatto con informazioni personali.</li>
- * <li>Confronto tra due contatti basato su nome e cognome.</li>
+ *   <li>Creazione e gestione dei dati di un contatto.</li>
+ *   <li>Confronto tra due contatti basato su nome e cognome.</li>
+ *   <li>Generazione di una rappresentazione testuale dei dati del contatto.</li>
  * </ul>
- *
- *
- * @author Paolo Riccardo Grasso, Alessandro Di Nella, Giuseppe Salomita, Mario
- * Favoino, Matteo Lucia
+ * 
  * @version Beta (2.0)
  * @since Alpha (1.0)
  */
@@ -26,25 +24,18 @@ public class Contatto {
     private String nome, cognome, numeroTelefono, email;
 
     /**
-     * Costruttore utile per istanziare e inizializzare l'intero contatto con i
-     * suoi parametri.
-     *
-     * @param nome Nome della persona da inserire
-     * @param cognome Cognome della persona da inserire
-     * @param numeroTelefono Numero di telefono della persona da inserire
-     * @param email (Opzionale) Email della persona da inserire
-     *
-     * @author Paolo Riccardo Grasso, Alessandro Di Nella, Giuseppe Salomita,
-     * Mario Favoino, Matteo Lucia
-     * @version Beta (2.0)
-     * @since Alpha (1.0)
-     *
+     * Costruisce un nuovo contatto con i dettagli forniti.
+     * 
+     * @param nome Nome della persona.
+     * @param cognome Cognome della persona.
+     * @param numeroTelefono Numero di telefono della persona.
+     * @param email Email della persona (opzionale; se vuota o "null", viene impostata a null).
      */
     public Contatto(String nome, String cognome, String numeroTelefono, String email) {
         this.nome = nome;
         this.cognome = cognome;
         this.numeroTelefono = numeroTelefono;
-        if (email.equals("")) {
+        if (email.equals("") || email.equals("null")) {
             this.email = null;
         } else {
             this.email = email;
@@ -52,124 +43,81 @@ public class Contatto {
     }
 
     /**
-     * Metodo getter per leggere il contenuto dell'attributo nome
+     * Restituisce il nome del contatto.
      * 
-     * @author Paolo Riccardo Grasso, Alessandro Di Nella, Giuseppe Salomita,
-     * Mario Favoino, Matteo Lucia
-     * @version Beta (2.0)
-     *
-     * @return String Nome della persona
-     * 
+     * @return Nome del contatto.
      */
     public String getNome() {
         return nome;
     }
 
     /**
-     * Metodo setter per scrivere il contenuto nell'attributo nome
-     *
-     * @author Paolo Riccardo Grasso, Alessandro Di Nella, Giuseppe Salomita,
-     * Mario Favoino, Matteo Lucia
-     * @version Beta (2.0)
-     * @param nome Nome da inserire
-     *
+     * Imposta il nome del contatto.
+     * 
+     * @param nome Nuovo nome del contatto.
      */
     public void setNome(String nome) {
         this.nome = nome;
     }
 
-    /**
-     * Metodo getter per leggere il contenuto dell'attributo cognome
+   /**
+     * Restituisce il cognome del contatto.
      * 
-     * @author Paolo Riccardo Grasso, Alessandro Di Nella, Giuseppe Salomita,
-     * Mario Favoino, Matteo Lucia
-     * @version Beta (2.0)
-     *
-     * @return String Cognome della persona
+     * @return Cognome del contatto.
      */
     public String getCognome() {
         return cognome;
     }
 
     /**
-     * Metodo setter per scrivere il contenuto nell'attributo cognome
+     * Imposta il cognome del contatto.
      * 
-     * @author Paolo Riccardo Grasso, Alessandro Di Nella, Giuseppe Salomita,
-     * Mario Favoino, Matteo Lucia
-     * @version Beta (2.0)
-     *
-     * @param cognome Cognome da inserire
-     *
+     * @param cognome Nuovo cognome del contatto.
      */
     public void setCognome(String cognome) {
         this.cognome = cognome;
     }
 
     /**
-     * Metodo getter per leggere il contenuto dell'attributo numeroTelefono
+     * Restituisce il numero di telefono del contatto.
      * 
-     * @author Paolo Riccardo Grasso, Alessandro Di Nella, Giuseppe Salomita,
-     * Mario Favoino, Matteo Lucia
-     * @version Beta (2.0)
-     *
-     * @return String Numero di telefono della persona
+     * @return Numero di telefono del contatto.
      */
     public String getNumeroTelefono() {
         return numeroTelefono;
     }
 
     /**
-     * Metodo setter per scrivere il contenuto nell'attributo numeroTelefono
+     * Imposta il numero di telefono del contatto.
      * 
-     * @author Paolo Riccardo Grasso, Alessandro Di Nella, Giuseppe Salomita,
-     * Mario Favoino, Matteo Lucia
-     * @version Beta (2.0)
-     *
-     * @param numeroTelefono Numero di telefono da inserire
-     *
+     * @param numeroTelefono Nuovo numero di telefono del contatto.
      */
     public void setNumeroTelefono(String numeroTelefono) {
         this.numeroTelefono = numeroTelefono;
     }
 
-    /**
-     * Metodo getter per leggere il contenuto dell'attributo Email
+   /**
+     * Restituisce l'email del contatto.
      * 
-     * @author Paolo Riccardo Grasso, Alessandro Di Nella, Giuseppe Salomita,
-     * Mario Favoino, Matteo Lucia
-     * @version Beta (2.0)
-     *
-     * @return String Email della persona
+     * @return Email del contatto, oppure null se non è definita.
      */
     public String getEmail() {
         return email;
     }
 
     /**
-     * Metodo setter per scrivere il contenuto nell'attributo email
+     * Imposta l'email del contatto.
      * 
-     * @author Paolo Riccardo Grasso, Alessandro Di Nella, Giuseppe Salomita,
-     * Mario Favoino, Matteo Lucia
-     * @version Beta (2.0)
-     *
-     * @param email Email da inserire
-     *
+     * @param email Nuova email del contatto.
      */
     public void setEmail(String email) {
         this.email = email;
     }
 
     /**
-     *
-     * HashCode utile per il metodo equals
+     * Calcola l'hash code del contatto, basato su nome e cognome.
      * 
-     * @author Paolo Riccardo Grasso, Alessandro Di Nella, Giuseppe Salomita,
-     * Mario Favoino, Matteo Lucia
-     * @version Beta (2.0)
-     * @since Alpha (1.0)
-     *
-     * @return int Hash
-     *
+     * @return Hash code del contatto.
      */
     @Override
     public int hashCode() {
@@ -180,20 +128,13 @@ public class Contatto {
     }
 
     /**
-     * Compara questo oggetto con un altro per verificare se sono uguali. Il
-     * confronto è basato su i valori dei campi `nome` e `cognome` dell'oggetto
-     * `Contatto`. Due oggetti sono considerati uguali se sono della stessa
-     * classe, non sono nulli e i loro campi `nome` e `cognome` sono uguali.
-     *
-     * @param obj l'oggetto con cui confrontare questo oggetto. Deve essere
-     * della stessa classe, altrimenti il metodo restituirà `false`.
+     * Confronta questo contatto con un altro oggetto.
+     * <p>
+     * Due contatti sono considerati uguali se hanno lo stesso nome e cognome.
+     * </p>
      * 
-     * @author Paolo Riccardo Grasso, Alessandro Di Nella, Giuseppe Salomita,
-     * Mario Favoino, Matteo Lucia
-     * @version Beta (2.0)
-     * @since Alpha (1.0)
-     * 
-     * @return `true` se gli oggetti sono uguali, `false` altrimenti.
+     * @param obj Oggetto da confrontare.
+     * @return true se i contatti sono uguali, false altrimenti.
      */
     @Override
     public boolean equals(Object obj) {
@@ -214,15 +155,12 @@ public class Contatto {
     }
 
     /**
-     * Metodo utile per visualizzare i dati di un singolo contatto.
+     * Restituisce una rappresentazione testuale del contatto.
+     * <p>
+     * Include tutte le informazioni principali come nome, cognome, numero di telefono ed email.
+     * </p>
      * 
-     * @author Paolo Riccardo Grasso, Alessandro Di Nella, Giuseppe Salomita,
-     * Mario Favoino, Matteo Lucia
-     * @version Beta (2.0)
-     * @since Alpha (1.0)
-     *
-     *
-     * @return String Stringa del contatto da visualizzare.
+     * @return Stringa rappresentativa del contatto.
      */
     @Override
     public String toString() {
