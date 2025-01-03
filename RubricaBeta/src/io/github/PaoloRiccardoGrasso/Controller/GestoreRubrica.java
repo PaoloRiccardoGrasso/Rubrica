@@ -472,7 +472,7 @@ public class GestoreRubrica {
         int indice = rubrica.cercaContatto(nome, cognome);
         if (indice != -1) {
             //Se il contatto viene trovato viene visualizzato e apportato le modifiche successive
-            menu.inviaMessaggio("Stai per modificare questo contatto:\n");
+            menu.inviaMessaggio("\nStai per modificare questo contatto:");
             menu.inviaMessaggio(rubrica.rubrica.get(indice).toString());
 
             menu.inviaMessaggio("\n========================================");
@@ -484,20 +484,16 @@ public class GestoreRubrica {
 
             // Inserimento del nuovo nome (Opzionale)
             menu.inviaMessaggio("Inserire nome> ");
-            String inputNome = scanner.nextLine().trim();
+            String inputNome = scanner.nextLine();
             if (inputNome.isEmpty()) {
                 menu.inviaMessaggio("Nome non modificato\n");
-            } else {
-                nome = inputNome;
             }
 
             // Inserimento del nuovo cognome (Opzionale)
             menu.inviaMessaggio("Inserire cognome> ");
-            String inputCognome = scanner.nextLine().trim();
+            String inputCognome = scanner.nextLine();
             if (inputCognome.isEmpty()) {
                 menu.inviaMessaggio("Cognome non modificato\n");
-            } else {
-                cognome = inputCognome;
             }
 
             menu.inviaMessaggio("Inserire numero> ");
@@ -544,6 +540,7 @@ public class GestoreRubrica {
                 } else {
                     email = emailCorrente; // Mantieni email esistente
                 }
+                
             } else {
                 while (true) {
                     try {
@@ -604,10 +601,15 @@ public class GestoreRubrica {
         int indice = rubrica.cercaContatto(nome, cognome);
         if (indice != -1) {
             menu.inviaMessaggio("\n");
-            menu.inviaMessaggio("Contatto trovato:  ");
+            menu.inviaMessaggio("=======================================");
+            menu.inviaMessaggio("\n|           Contatto trovato          |");
+            menu.inviaMessaggio("\n=======================================\n");
             menu.inviaMessaggio(rubrica.rubrica.get(indice).toString());
         } else {
-            menu.inviaMessaggio("Contatto non trovato! ");
+            menu.inviaMessaggio("\n");
+            menu.inviaMessaggio("=======================================");
+            menu.inviaMessaggio("\n|         Contatto non trovato        |");
+            menu.inviaMessaggio("\n=======================================\n");
         }
 
     }
