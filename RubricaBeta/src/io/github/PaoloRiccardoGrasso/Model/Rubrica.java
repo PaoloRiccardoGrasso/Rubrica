@@ -4,6 +4,8 @@ import java.io.*;
 import java.util.ArrayList;
 import java.util.StringTokenizer;
 import io.github.PaoloRiccardoGrasso.Model.Contatto;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  * Questa classe rappresenta una semplice rubrica telefonica contenente i
@@ -18,7 +20,7 @@ import io.github.PaoloRiccardoGrasso.Model.Contatto;
  * <li>Ricerca contatto nella rubrica</li>
  * </ul>
  *
- * 
+ *
  *
  * @author Paolo Riccardo Grasso, Alessandro Di Nella, Giuseppe Salomita, Mario
  * Favoino, Matteo Lucia
@@ -29,7 +31,6 @@ public class Rubrica {
 
     // ArrayList di contatti
     public ArrayList<Contatto> rubrica = new ArrayList();
-    private static final String NOME_FILE = "rubrica.txt";
 
     /**
      * Aggiunge un contatto alla rubrica.
@@ -40,8 +41,8 @@ public class Rubrica {
      * Mario Favoino, Matteo Lucia
      * @version Beta (2.0)
      * @since Alpha (1.0)
-     * 
-     * @return boolean 
+     *
+     * @return boolean
      * <ul>
      * <li> True: Contatto Aggiunto con successo </li>
      * <li> False: Errore nell'inserimento del contatto </li>
@@ -62,13 +63,13 @@ public class Rubrica {
      * Rimuove un contatto dalla rubrica.
      *
      * @param indiceContatto Indice del contatto da rimuovere
-     * 
+     *
      * @author Paolo Riccardo Grasso, Alessandro Di Nella, Giuseppe Salomita,
      * Mario Favoino, Matteo Lucia
      * @version Beta (2.0)
      * @since Alpha (1.0)
-     * 
-     * @return boolean 
+     *
+     * @return boolean
      * <ul>
      * <li> True: Contatto rimosso con successo </li>
      * <li> False: Errore nella rimozione del contatto </li>
@@ -89,18 +90,18 @@ public class Rubrica {
      *
      * @param nome Nome del contatto da cercare
      * @param cognome Cognome del contatto da cercare
-     * 
+     *
      * @author Paolo Riccardo Grasso, Alessandro Di Nella, Giuseppe Salomita,
      * Mario Favoino, Matteo Lucia
      * @version Beta (2.0)
      * @since Alpha (1.0)
-     * 
-     * @return int 
+     *
+     * @return int
      * <ul>
      * <li> Index: Indice della posizione in cui si trova il contatto </li>
      * <li> -1: Contatto non trovato </li>
      * </ul>
-     * 
+     *
      */
     public int cercaContatto(String nome, String cognome) {
         boolean isContattoTrovato = false;
@@ -123,25 +124,25 @@ public class Rubrica {
     }
 
     /**
-     * Modifica i dati del contatto passandogli il nuovo contatto 
+     * Modifica i dati del contatto passandogli il nuovo contatto
      *
      * @param contatto Nuovo contatto con cui fare i cambiamenti del vecchio
-     * 
-     * 
+     *
+     *
      * @author Paolo Riccardo Grasso, Alessandro Di Nella, Giuseppe Salomita,
      * Mario Favoino, Matteo Lucia
      * @version Beta (2.0)
      * @since Alpha (1.0)
-     * 
+     *
      * @return boolean
      * <ul>
      * <li> True: Contatto modificato con successo </li>
      * <li> False: Contatto non trovato o impossibilitato a modificarlo </li>
      * </ul>
-     * 
+     *
      */
     public boolean modificaContatto(Contatto contatto, int indiceContatto) {
-        
+
         if (indiceContatto != -1) {
             rubrica.set(indiceContatto, contatto);
             return true;
@@ -150,30 +151,105 @@ public class Rubrica {
             return false;
         }
     }
-    
-    
+
     @Override
     public String toString() {
         String s = "";
-        if(rubrica.isEmpty()){
+        if (rubrica.isEmpty()) {
             return "-1";
         } else {
-            for(int i=0; i<rubrica.size(); i++){
-                s+= rubrica.get(i).toString() + "\n";
+            for (int i = 0; i < rubrica.size(); i++) {
+                s += rubrica.get(i).toString() + "\n";
             }
         }
-        
+
         return s;
     }
-    
+
     //----------------------------------------------SALVATAGGIO SU FILE----------------------------------------------
+    private final String fileRubrica = "rubrica.txt";
 
-    
-    
-    
+    public boolean salvaContattoSuFile(Contatto contatto) {
+        try {
+            FileWriter w = new FileWriter(fileRubrica, true);
+            PrintWriter fout = new PrintWriter(w);
+
+            fout.println(contatto.getNome() + ";" + contatto.getCognome() + ";" + contatto.getNumeroTelefono() + ";" + contatto.getEmail());
+            fout.flush();
+            w.close();
+            return true;
+
+        } catch (IOException ex) {
+            return false;
+        }
+    }
+
+    /* ELIMINAZIONE INUTILE
+    public boolean rimuoviContattoSuFile(Contatto contatto) {
+        try {
+            FileWriter w = new FileWriter(fileRubrica, true);
+            PrintWriter fout = new PrintWriter(w);
+            FileReader r = new FileReader(fileRubrica);
+            BufferedReader fin = new BufferedReader(r);
+            StringTokenizer stringa = null;
+            String riga = fin.readLine();
+            
+            while(riga != null){
+                new StringTokenizer(riga, ";");
+                if(contatto.getNome().equals(stringa.nextToken()) && contatto.getCognome().equals(stringa.nextToken())){
+                    
+                }
+            }
+            
+            
+            fout.flush();
+            w.close();
+            return true;
+
+        } catch (IOException ex) {
+            return false;
+        }
+    }*/
+    public boolean esportaContatti() {
+        try {
+            FileWriter w = new FileWriter(fileRubrica, false);
+            PrintWriter fout = new PrintWriter(w);
+
+            if (rubrica.isEmpty()) {
+                w.close();
+            } else {
+                for (int i = 0; i < rubrica.size(); i++) {
+                    fout.println(rubrica.get(i).getNome() + ";" + rubrica.get(i).getCognome() + ";" + rubrica.get(i).getNumeroTelefono() + ";" + rubrica.get(i).getEmail());
+
+                }
+                fout.flush();
+                w.close();
+            }
+
+            return true;
+        } catch (IOException ex) {
+            return false;
+        }
+    }
+
+    public boolean importaContatti() {
+        try {
+            FileReader r = new FileReader(fileRubrica);
+            BufferedReader fin = new BufferedReader(r);
+            StringTokenizer stringa = null;
+            String riga = fin.readLine();
+
+            while (riga != null) {
+                stringa = new StringTokenizer(riga, ";");
+                Contatto contatto = new Contatto(stringa.nextToken(), stringa.nextToken(), stringa.nextToken(), stringa.nextToken());
+                rubrica.add(contatto);
+                riga = fin.readLine();
+            }
+
+            return true;
+
+        } catch (IOException ex) {
+            return false;
+        }
+    }
 }
-
-
-
-
-

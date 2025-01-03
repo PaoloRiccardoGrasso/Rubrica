@@ -25,6 +25,7 @@ public class Menu {
 
     public Menu() {
         this.gestoreRubrica = new GestoreRubrica(this);
+        
     }
 
     /**
@@ -59,6 +60,8 @@ public class Menu {
      * @version Beta (2.0)
      * @since Alpha (1.0)
      */
+    
+    
     public void cls() {
         try {
             if (System.getProperty("os.name").contains("Windows")) {
@@ -83,7 +86,7 @@ public class Menu {
      * @since Alpha (1.0)
      */
     private void interfaccia() {
-        if (gestoreRubrica.isActiveAutomaticSave == false) {
+
             System.out.println("=======================================");
             System.out.println("|             RUBRICA CLI             |");
             System.out.println("|=====================================|");
@@ -92,22 +95,8 @@ public class Menu {
             System.out.println("|  3. Modifica Contatto               |");
             System.out.println("|  4. Ricerca Contatto                |");
             System.out.println("|  5. Visualizza Rubrica              |");
-            System.out.println("|  6. Attiva Salvataggio Automatico   |");
-            System.out.println("|  7. Esci                            |");
+            System.out.println("|  6. Esci                            |");
             System.out.println("=======================================");
-        } else {
-            System.out.println("=======================================");
-            System.out.println("|             RUBRICA CLI             |");
-            System.out.println("|=====================================|");
-            System.out.println("|  1. Aggiungi Contatto               |");
-            System.out.println("|  2. Rimuovi Contatto                |");
-            System.out.println("|  3. Modifica Contatto               |");
-            System.out.println("|  4. Ricerca Contatto                |");
-            System.out.println("|  5. Visualizza Rubrica              |");
-            System.out.println("|  6. Disattivare Salvataggio Auto.   |");
-            System.out.println("|  7. Esci                            |");
-            System.out.println("=======================================");
-        }
     }
 
     /**

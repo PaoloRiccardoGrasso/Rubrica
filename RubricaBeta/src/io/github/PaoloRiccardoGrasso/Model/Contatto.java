@@ -44,7 +44,7 @@ public class Contatto {
         this.nome = nome;
         this.cognome = cognome;
         this.numeroTelefono = numeroTelefono;
-        if (email.equals("")) {
+        if (email.equals("") || email.equals("null")) {
             this.email = null;
         } else {
             this.email = email;

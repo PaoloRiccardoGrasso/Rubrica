@@ -54,6 +54,7 @@ public class GestoreRubrica {
      */
     public GestoreRubrica(Menu menu) {
         this.menu = menu;
+        rubrica.importaContatti();
     }
 
     /**
@@ -100,10 +101,6 @@ public class GestoreRubrica {
                     pausa();
                     break;
                 case 6:
-                    /*Chiamata al metodo utile per attivare/disattivare il salvataggio automatico*/
-                    ActiveOrDisableAutomaticSave();
-                    break;
-                case 7:
                     //Istruzioni utili per l'uscita da parte dell'utente dal programma
                     menu.inviaMessaggio("Uscita dal programma.");
                     pausa();
@@ -322,6 +319,11 @@ public class GestoreRubrica {
                 menu.inviaMessaggio("\n=======================================");
                 menu.inviaMessaggio("\n|   Contatto Aggiunto con successo!   |");
                 menu.inviaMessaggio("\n=======================================\n");
+                if(rubrica.salvaContattoSuFile(contatto)){
+                    menu.inviaMessaggio("Aggiunto nel file");
+                } else {
+                    menu.inviaMessaggio("Non aggiunto nel file");
+                }
             } else {
                 /*Se restituito false dalla funzione aggiungiContatto, verrà stampata
                 attraverso la view la seguente schermata*/
@@ -341,6 +343,7 @@ public class GestoreRubrica {
             pausa();
             menu.apriMenu();
         }
+        
         
     }
 
@@ -406,6 +409,11 @@ public class GestoreRubrica {
                 menu.inviaMessaggio("\n=======================================");
                 menu.inviaMessaggio("\n|    Contatto Rimosso con successo!   |");
                 menu.inviaMessaggio("\n=======================================\n");
+                if(rubrica.esportaContatti()){
+                    menu.inviaMessaggio("Rimosso dal file");
+                } else {
+                    menu.inviaMessaggio("Non rimosso dal file");
+                }
                 pausa();
             } else {
                 /*se il metodo rimuoviContatto restituisce false, viene stampata attraverso la view
@@ -502,7 +510,9 @@ public class GestoreRubrica {
                 inputCognome = rubrica.rubrica.get(indice).getCognome();
             } 
             
-            menu.inviaMessaggio("Inserire numero> ");
+            int indiceMod = rubrica.cercaContatto(inputNome, inputCognome);
+            if(indiceMod == -1){
+                menu.inviaMessaggio("Inserire numero> ");
             while (true) {
                 String input = scanner.nextLine();
                 if (input.isEmpty()) {
@@ -572,12 +582,21 @@ public class GestoreRubrica {
                 menu.inviaMessaggio("\n=======================================");
                 menu.inviaMessaggio("\n|  Contatto Modificato con successo!  |");
                 menu.inviaMessaggio("\n=======================================\n");
+                if(rubrica.esportaContatti()){
+                    menu.inviaMessaggio("Modifica dal file");
+                } else {
+                    menu.inviaMessaggio("Non modifica dal file");
+                }
             } else {
                 menu.inviaMessaggio("\n");
                 menu.inviaMessaggio("\n=======================================");
                 menu.inviaMessaggio("\n|  Errore nella modifica del contat.  |");
                 menu.inviaMessaggio("\n=======================================\n");
             }
+            } else  {
+                menu.inviaMessaggio("Contatto non modificato perchè ne esiste già uno con stesso nome e cognome!");
+            }
+            
         } else {
             menu.inviaMessaggio("Contatto non trovato!");
         }
