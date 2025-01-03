@@ -4,16 +4,15 @@ import io.github.PaoloRiccardoGrasso.Controller.GestoreRubrica;
 import java.util.Scanner;
 
 /**
- * Questa classe rappresenta la visualizzazione del menù per effettuare le
- * classiche operazioni definita dalla struttura CRUD
- *
+ * Classe per la visualizzazione del menù delle operazioni CRUD nella rubrica.
+ * <p>
  * Funzionalità principali:
  * <ul>
- * <li>Visualizzare all'utente il menu</li>
- * <li>Metodo per ripulire lo schermo</li>
- * <li>Metodo per mettere in pausa la visualizzazione</li>
+ * <li>Visualizzazione del menu all'utente</li>
+ * <li>Pulizia dello schermo</li>
+ * <li>Invio di messaggi al terminale</li>
  * </ul>
- *
+ * 
  *
  * @author Paolo Riccardo Grasso, Alessandro Di Nella, Giuseppe Salomita, Mario
  * Favoino, Matteo Lucia
@@ -21,22 +20,19 @@ import java.util.Scanner;
  * @since Alpha (1.0)
  */
 public class Menu {
+
     private GestoreRubrica gestoreRubrica;
 
+    /**
+     * Costruttore per inizializzare il GestoreRubrica associato.
+     */
     public Menu() {
         this.gestoreRubrica = new GestoreRubrica(this);
-        
+
     }
 
     /**
-     * Metodo principale per la visualizzazione del menù
-     *
-     *
-     *
-     * @author Paolo Riccardo Grasso, Alessandro Di Nella, Giuseppe Salomita,
-     * Mario Favoino, Matteo Lucia
-     * @version Beta (2.0)
-     * @since Alpha (1.0)
+     * Metodo principale per la visualizzazione del menù e gestione iterativa.
      */
     public void apriMenu() {
         do {
@@ -47,21 +43,12 @@ public class Menu {
     }
 
     /**
-     * Metodo per ripulire lo schermo attraverso il sistema operativo
-     *
+     * Metodo per pulire lo schermo utilizzando i comandi di sistema.
      * <ul>
-     * <li> Windows: Utilizza il comando 'cls'</li>
-     * <li> Linux o MacOS: Utilizza il comando 'clear'</li>
+     * <li>Windows: usa il comando 'cls'</li>
+     * <li>Linux/MacOS: usa il comando 'clear'</li>
      * </ul>
-     *
-     *
-     * @author Paolo Riccardo Grasso, Alessandro Di Nella, Giuseppe Salomita,
-     * Mario Favoino, Matteo Lucia
-     * @version Beta (2.0)
-     * @since Alpha (1.0)
      */
-    
-    
     public void cls() {
         try {
             if (System.getProperty("os.name").contains("Windows")) {
@@ -74,39 +61,26 @@ public class Menu {
         }
     }
 
-    
-
-
     /**
-     * Metodo per visualizzare l'interfaccia del menù a riga di comando
-     *
-     * @author Paolo Riccardo Grasso, Alessandro Di Nella, Giuseppe Salomita,
-     * Mario Favoino, Matteo Lucia
-     * @version Beta (2.0)
-     * @since Alpha (1.0)
+     * Metodo per visualizzare l'interfaccia del menù a riga di comando.
      */
     private void interfaccia() {
-
-            System.out.println("=======================================");
-            System.out.println("|             RUBRICA CLI             |");
-            System.out.println("|=====================================|");
-            System.out.println("|  1. Aggiungi Contatto               |");
-            System.out.println("|  2. Rimuovi Contatto                |");
-            System.out.println("|  3. Modifica Contatto               |");
-            System.out.println("|  4. Ricerca Contatto                |");
-            System.out.println("|  5. Visualizza Rubrica              |");
-            System.out.println("|  6. Esci                            |");
-            System.out.println("=======================================");
+        System.out.println("=======================================");
+        System.out.println("|             RUBRICA CLI             |");
+        System.out.println("|=====================================|");
+        System.out.println("|  1. Aggiungi Contatto               |");
+        System.out.println("|  2. Rimuovi Contatto                |");
+        System.out.println("|  3. Modifica Contatto               |");
+        System.out.println("|  4. Ricerca Contatto                |");
+        System.out.println("|  5. Visualizza Rubrica              |");
+        System.out.println("|  6. Esci                            |");
+        System.out.println("=======================================");
     }
 
     /**
-     * Metodo utile al controller per inviare messaggi attraverso il view
+     * Metodo per inviare messaggi alla vista dal controller.
      *
-     * @param messaggio Messaggio da inviare attraverso la view
-     * 
-     * @author Paolo Riccardo Grasso, Alessandro Di Nella, Giuseppe Salomita,
-     * Mario Favoino, Matteo Lucia
-     * @version Beta (2.0)
+     * @param messaggio Messaggio da visualizzare
      */
     public void inviaMessaggio(String messaggio) {
         System.out.print(messaggio);
