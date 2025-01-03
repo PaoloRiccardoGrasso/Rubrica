@@ -24,7 +24,7 @@ import java.util.Scanner;
  * @since Alpha (1.0)
  */
 public class GestoreRubrica {
-
+    
     private Menu menu;
     /**
      * Attributo pubblico per controllare lo stato del salvataggio automatico:
@@ -219,9 +219,9 @@ public class GestoreRubrica {
      */
     private void aggiungiContatto() {
         String nome, cognome, numeroDiTelefono, email;
-
+        
         scanner.nextLine();
-
+        
         menu.cls();
 
         //Interfaccia inviata dal controller attraverso la view
@@ -267,16 +267,16 @@ public class GestoreRubrica {
                     if (!numeroDiTelefono.matches("^\\+?\\d{9,}$")) {
                         throw new IllegalArgumentException("Il numero deve contenere solo cifre (min. 9) , opzionalmente, un '+' all'inizio.\n");
                     }
-
+                    
                     break;
-
+                    
                 } catch (IllegalArgumentException e) {
                     menu.inviaMessaggio("Errore: " + e.getMessage());
                 }
             }
-
+            
             scanner.nextLine();
-
+            
             while (true) {
                 try {
                     //Inserimento dell'email e controllo attraverso regole regex
@@ -303,7 +303,7 @@ public class GestoreRubrica {
                     if (!email.matches("^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$")) {
                         throw new IllegalArgumentException("L'indirizzo email non è valido. Assicurati che sia nel formato corretto, ad esempio: nomeutente@dominio.com\n");
                     }
-
+                    
                     break; // Email valida, esci dal ciclo
                 } catch (IllegalArgumentException e) {
                     menu.inviaMessaggio("Errore: " + e.getMessage());
@@ -330,14 +330,18 @@ public class GestoreRubrica {
                 menu.inviaMessaggio("\n| Errore nell'inserimento del contat. |");
                 menu.inviaMessaggio("\n=======================================\n");
             }
-
+            
         } else {
             //Qualora il contatto dovesse già esistere verrà stampato attraverso la view il seguente messagggio:
-            menu.inviaMessaggio("Contatto già esistente! Non Aggiunto\n");
+            menu.inviaMessaggio("\n");
+            menu.inviaMessaggio("\n=======================================");
+            menu.inviaMessaggio("\n|       Contatto già esistente!       |");
+            menu.inviaMessaggio("\n|            Non aggiunto             |");
+            menu.inviaMessaggio("\n=======================================\n");
             pausa();
             menu.apriMenu();
         }
-
+        
     }
 
     /**
@@ -417,7 +421,7 @@ public class GestoreRubrica {
             menu.inviaMessaggio("Contatto non trovato!");
             pausa();
         }
-
+        
     }
 
     /**
@@ -444,7 +448,7 @@ public class GestoreRubrica {
      */
     private void modificaContatto() {
         String nome, cognome, email = null, numeroDiTelefono = null;
-
+        
         scanner.nextLine();
         menu.cls();
 
@@ -474,7 +478,7 @@ public class GestoreRubrica {
             //Se il contatto viene trovato viene visualizzato e apportato le modifiche successive
             menu.inviaMessaggio("\nStai per modificare questo contatto:");
             menu.inviaMessaggio(rubrica.rubrica.get(indice).toString());
-
+            
             menu.inviaMessaggio("\n========================================");
             menu.inviaMessaggio("\n|          Modifica Contatto           |");
             menu.inviaMessaggio("\n|                                      |");
@@ -487,6 +491,7 @@ public class GestoreRubrica {
             String inputNome = scanner.nextLine();
             if (inputNome.isEmpty()) {
                 menu.inviaMessaggio("Nome non modificato\n");
+                inputNome = rubrica.rubrica.get(indice).getNome();
             }
 
             // Inserimento del nuovo cognome (Opzionale)
@@ -494,11 +499,12 @@ public class GestoreRubrica {
             String inputCognome = scanner.nextLine();
             if (inputCognome.isEmpty()) {
                 menu.inviaMessaggio("Cognome non modificato\n");
-            }
-
+                inputCognome = rubrica.rubrica.get(indice).getCognome();
+            } 
+            
             menu.inviaMessaggio("Inserire numero> ");
             while (true) {
-                String input = scanner.nextLine().trim();
+                String input = scanner.nextLine();
                 if (input.isEmpty()) {
                     menu.inviaMessaggio("Numero non modificato\n");
                     numeroDiTelefono = rubrica.rubrica.get(indice).getNumeroTelefono();
@@ -517,24 +523,24 @@ public class GestoreRubrica {
                         if (!input.matches("^\\+?\\d{9,}$")) {
                             throw new IllegalArgumentException("Il numero deve contenere solo cifre (min. 9) e, opzionalmente, un '+' all'inizio.\n");
                         }
-
+                        
                         numeroDiTelefono = input;
                         break;
-
+                        
                     } catch (IllegalArgumentException e) {
                         menu.inviaMessaggio("Errore: " + e.getMessage());
                         menu.inviaMessaggio("Inserire numero> ");
                     }
                 }
             }
-
+            
             menu.inviaMessaggio("Inserire email> ");
             String input = scanner.nextLine();
-
+            
             if (input.isEmpty()) {
                 menu.inviaMessaggio("Email non modificata\n");
                 String emailCorrente = rubrica.rubrica.get(indice).getEmail();
-
+                
                 if (emailCorrente == null || emailCorrente.isEmpty()) {
                     email = ""; // Mantieni email vuota se non esiste già un valore
                 } else {
@@ -550,7 +556,7 @@ public class GestoreRubrica {
                         if (!email.matches("^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$")) {
                             throw new IllegalArgumentException("L'indirizzo email non è valido. Assicurati che sia nel formato corretto, ad esempio: nomeutente@dominio.com\n");
                         }
-
+                        
                         break; // Email valida, esci dal ciclo
                     } catch (IllegalArgumentException e) {
                         menu.inviaMessaggio("Errore: " + e.getMessage());
@@ -559,8 +565,8 @@ public class GestoreRubrica {
                     }
                 }
             }
-
-            Contatto contatto = new Contatto(nome, cognome, numeroDiTelefono, email);
+            
+            Contatto contatto = new Contatto(inputNome, inputCognome, numeroDiTelefono, email);
             if (rubrica.modificaContatto(contatto, indice)) {
                 menu.inviaMessaggio("\n");
                 menu.inviaMessaggio("\n=======================================");
@@ -576,28 +582,28 @@ public class GestoreRubrica {
             menu.inviaMessaggio("Contatto non trovato!");
         }
     }
-
+    
     private void ricercaContatto() {
         String nome, cognome;
-
+        
         scanner.nextLine();
         menu.cls();
-
+        
         menu.inviaMessaggio("=======================================");
         menu.inviaMessaggio("\n|          Ricerca Contatto          |");
         menu.inviaMessaggio("\n=======================================\n");
         menu.inviaMessaggio("\n");
-
+        
         do {
             menu.inviaMessaggio("Inserire nome> ");
             nome = scanner.nextLine();
         } while (nome.equals(""));
-
+        
         do {
             menu.inviaMessaggio("Inserire cognome> ");
             cognome = scanner.nextLine();
         } while (nome.equals(""));
-
+        
         int indice = rubrica.cercaContatto(nome, cognome);
         if (indice != -1) {
             menu.inviaMessaggio("\n");
@@ -611,14 +617,14 @@ public class GestoreRubrica {
             menu.inviaMessaggio("\n|         Contatto non trovato        |");
             menu.inviaMessaggio("\n=======================================\n");
         }
-
+        
     }
-
+    
     private void visualizzaRubrica() {
         menu.cls();
         menu.inviaMessaggio("=======================================");
         menu.inviaMessaggio("\n|             RUBRICA CLI             |");
-
+        
         if (rubrica.toString().equals("-1")) {
             menu.inviaMessaggio("\n|                                     |");
             menu.inviaMessaggio("\n|          La rubrica è vuota         |");
@@ -628,8 +634,8 @@ public class GestoreRubrica {
             menu.inviaMessaggio("\n=======================================");
             menu.inviaMessaggio(rubrica.toString());
         }
-
+        
         scanner.nextLine();
     }
-
+    
 }
